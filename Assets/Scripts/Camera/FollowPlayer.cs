@@ -1,5 +1,5 @@
 using UnityEngine;
-
+// TODO: Document
 public class FollowPlayer : MonoBehaviour
 {
 
@@ -13,7 +13,7 @@ public class FollowPlayer : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void LateUpdate()
     {   
         // get player position, set as camera position and apply offset
         transform.position = target.position + offset;

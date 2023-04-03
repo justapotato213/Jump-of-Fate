@@ -1,8 +1,9 @@
 using UnityEngine;
+// TODO: Document
 
-public class PlayerMovement : MonoBehaviour
+public class PlayerController : MonoBehaviour
 {
-    #region Movement
+    #region MovementVars
     /// <summary>
     /// Direction of the character
     /// </summary>
@@ -41,15 +42,13 @@ public class PlayerMovement : MonoBehaviour
     /// </summary>
     private float hangCounter = 0.2f;
 
-    
-
     /// <summary>
     /// Direction of the character
     /// </summary>
     private bool isFacingRight = true;
     #endregion
 
-    #region Physics
+    #region PhysicsVars
     /// <summary>
     /// Rigidbody belonging to character
     /// </summary>
@@ -64,11 +63,15 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private LayerMask groundLayer;
     #endregion
 
-    #region Misc
+    #region MiscVars
+    /// <summary>
+    /// Respawn prefab of the character
+    /// </summary>
+    public GameObject respawnPrefab;
     /// <summary>
     /// Respawn point of the character
     /// </summary>
-    public Transform respawnPoint;
+    public GameObject respawnPoint;
     #endregion
 
     void Update()
@@ -190,6 +193,6 @@ public class PlayerMovement : MonoBehaviour
     public void Respawn()
     {
 
-        rb.position = respawnPoint.position;
+        rb.position = respawnPoint.transform.position;
     }
 }
