@@ -192,7 +192,6 @@ public class PlayerController : MonoBehaviour
     /// </summary>
     public void Respawn()
     {
-
         rb.position = respawnPoint.transform.position;
     }
 }
