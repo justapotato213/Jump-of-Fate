@@ -24,6 +24,5 @@ public class TileMapTest : MonoBehaviour
     {
         if (!m_Tilemap.HasTile(m_Position))
             m_Tilemap.SetTile(m_Position, m_Tile);
-        
     }
 }
