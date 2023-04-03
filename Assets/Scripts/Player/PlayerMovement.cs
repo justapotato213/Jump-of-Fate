@@ -27,19 +27,6 @@ public class PlayerMovement : MonoBehaviour
     /// Counts how long since the character was grounded
     /// </summary>
     private float hangCounter = 0.2f;
-    
-    /// <summary>
-    /// Controls how offset the camera is in the x direction
-    /// </summary>
-    public float camOffset = 4;
-    /// <summary>
-    /// Controls how fast the camera shifts to the new offset
-    /// </summary>
-    public float camSpeed = 3;
-    /// <summary>
-    /// The camera's target position
-    /// </summary>
-    public Transform cameraTarget;
 
     /// <summary>
     /// Respawn point of the character
@@ -122,7 +109,6 @@ public class PlayerMovement : MonoBehaviour
         {
             hangCounter -= Time.deltaTime;
         }
-        Debug.Log(hangCounter);
     }
 
     /// <summary>
@@ -143,7 +129,10 @@ public class PlayerMovement : MonoBehaviour
 
     }
 
-    private void Respawn()
+    /// <summary>
+    /// Forces character class to teleport to its respawnPoint
+    /// </summary>
+    public void Respawn()
     {
 
         rb.position = respawnPoint.position;
