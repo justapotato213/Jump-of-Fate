@@ -63,25 +63,8 @@ public class PlayerMovement : MonoBehaviour
 
         // hang time
         CalcHangTime();
-
         // jumping 
         Jump();
-
-        // camera
-        // TODO: fix and make lerp
-        if (Input.GetAxisRaw("Horizontal") == 1)
-        {
-            cameraTarget.localPosition = new Vector3(camOffset, cameraTarget.localPosition.y, cameraTarget.localPosition.z);
-            Debug.Log(cameraTarget.localPosition);
-        }
-        // extremely stupid but breaks otherwise
-        else if (Input.GetAxisRaw("Horizontal") == -1)
-        {
-            cameraTarget.localPosition = new Vector3(camOffset, cameraTarget.localPosition.y, cameraTarget.localPosition.z);
-            Debug.Log(cameraTarget.localPosition);
-        }
-       
-
         // check for flip, and flip them
         Flip();
     }
