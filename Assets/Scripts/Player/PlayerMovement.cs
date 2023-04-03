@@ -41,6 +41,10 @@ public class PlayerMovement : MonoBehaviour
     /// </summary>
     public Transform cameraTarget;
 
+    /// <summary>
+    /// Respawn point of the character
+    /// </summary>
+    public Transform respawnPoint;
 
 
     /// <summary>
@@ -67,6 +71,11 @@ public class PlayerMovement : MonoBehaviour
         Jump();
         // check for flip, and flip them
         Flip();
+        // TODO: change later to reflect proper level y positions
+        if (rb.position.y <= -50)
+        {
+            Respawn();
+        }
     }
 
     private void FixedUpdate()
@@ -98,6 +107,9 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Calculates how much hang time the player has
+    /// </summary>
     private void CalcHangTime()
     {
         // checks if its grounded, and if so reset their hang counter
@@ -110,8 +122,12 @@ public class PlayerMovement : MonoBehaviour
         {
             hangCounter -= Time.deltaTime;
         }
+        Debug.Log(hangCounter);
     }
 
+    /// <summary>
+    /// Allows the player to jump, checking for hangtime as well as velocity
+    /// </summary>
     private void Jump()
     {
         // allows them to jump if they are hanging, and don't already have a positive y velocity
@@ -125,5 +141,11 @@ public class PlayerMovement : MonoBehaviour
             rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * 0.5f);
         }
 
+    }
+
+    private void Respawn()
+    {
+
+        rb.position = respawnPoint.position;
     }
 }
