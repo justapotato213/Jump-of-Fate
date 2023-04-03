@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
+    #region Movement
     /// <summary>
     /// Direction of the character
     /// </summary>
@@ -15,9 +16,21 @@ public class PlayerMovement : MonoBehaviour
     /// </summary>
     public float jumpingPower = 16f;
     /// <summary>
-    /// Direction of the character
+    /// How fast the character accelerates
     /// </summary>
-    private bool isFacingRight = true;
+    public float acceleration = 7;
+    /// <summary>
+    /// How fast the character decelerates
+    /// </summary>
+    public float deceleration = 7;
+    /// <summary>
+    /// Controls overall acceleration and deceleration speed
+    /// </summary>
+    public float velPower = 0.9f;
+    /// <summary>
+    /// Amount of friction applied when not inputting while grounded
+    /// </summary>
+    public float frictionAmount = 0.2f;
 
     /// <summary>
     /// How long the character can get a jump in, after walking off an edge
@@ -28,12 +41,15 @@ public class PlayerMovement : MonoBehaviour
     /// </summary>
     private float hangCounter = 0.2f;
 
+    
+
     /// <summary>
-    /// Respawn point of the character
+    /// Direction of the character
     /// </summary>
-    public Transform respawnPoint;
+    private bool isFacingRight = true;
+    #endregion
 
-
+    #region Physics
     /// <summary>
     /// Rigidbody belonging to character
     /// </summary>
@@ -46,6 +62,14 @@ public class PlayerMovement : MonoBehaviour
     /// Ground layer
     /// </summary>
     [SerializeField] private LayerMask groundLayer;
+    #endregion
+
+    #region Misc
+    /// <summary>
+    /// Respawn point of the character
+    /// </summary>
+    public Transform respawnPoint;
+    #endregion
 
     void Update()
     {
@@ -67,8 +91,39 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        // changing their velocity
-        rb.velocity = new Vector2(horizontal * speed, rb.velocity.y);
+        // calculates the speed the user desires 
+        float targetSpeed = horizontal * speed;
+        // finds the difference in speed between the two
+        float speedDif = targetSpeed - rb.velocity.x;
+        // change the acceleration rate, depending on situation
+        float accelRate = (Mathf.Abs(targetSpeed) > 0.01f) ? acceleration : deceleration;
+        // applies acceleration, which increases due to the power with higher speeds
+        // finally multiplies by sign to reapply direction
+        float movement = Mathf.Pow(Mathf.Abs(speedDif) * accelRate, velPower) * Mathf.Sign(speedDif);
+
+        rb.AddForce(movement * Vector2.right);
+
+        // artificial friction, checking if we're grounded and not inputting
+        if (hangCounter == hangTime && horizontal == 0)
+        {
+            // check which one is lower, cur vel or friction amount
+            float amount = Mathf.Min(Mathf.Abs(rb.velocity.x), Mathf.Abs(frictionAmount));
+            // sets to current movement direction
+            amount *= Mathf.Sign(rb.velocity.x);
+            // applies force against the current movement direction
+            rb.AddForce(Vector2.right * -amount, ForceMode2D.Impulse);
+        }
+
+        // increase gravity when falling, to make it feel better
+        if (rb.velocity.y < 0)
+        {
+            rb.gravityScale = 6;
+        }
+        else
+        {
+            rb.gravityScale = 4;
+        }
+
     }
 
     /// <summary>
@@ -81,7 +136,7 @@ public class PlayerMovement : MonoBehaviour
     }
 
     /// <summary>
-    /// Checks if character is going to flip, and if so changes necessary variables
+    /// Checks if character is going to flip, and if so changes the sprite to reflect it
     /// </summary>
     private void Flip()
     {
