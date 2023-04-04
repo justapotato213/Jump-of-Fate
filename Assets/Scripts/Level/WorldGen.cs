@@ -1,10 +1,11 @@
-﻿using System;
-using System.Collections;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.Tilemaps;
 
 namespace Assets.Scripts.Level
 {
+    /// <summary>
+    /// Generates the world, converting from a texture to a world using tiles and prefabs.
+    /// </summary>
     public class WorldGen : MonoBehaviour
     {
         /// <summary>
@@ -14,7 +15,7 @@ namespace Assets.Scripts.Level
         /// <summary>
         /// Maps a colour to a specific tile
         /// </summary>
-        public ColorToTile[] ColorTileMapping;
+        public ColorToSprite[] ColorTileMapping;
         /// <summary>
         /// Maps a colour to a specific prefab
         /// </summary>
@@ -36,13 +37,14 @@ namespace Assets.Scripts.Level
         /// </summary>
         private Color _colorPixel;
         
-
-        // Use this for initialization
         void Start()
         {
             CreateLevels();
         }
 
+        /// <summary>
+        /// Main function which loops through all pixels in GameMap
+        /// </summary>
         private void CreateLevels()
         {
             // loop through all 
@@ -55,12 +57,18 @@ namespace Assets.Scripts.Level
             }
         }
 
+        /// <summary>
+        /// Generates objects or tiles based on the colour of the pixel
+        /// </summary>
+        /// <param name="xPos">X position of the object</param>
+        /// <param name="yPos">Y position of the object</param>
         private void GenerateObject(int xPos, int yPos)
         {
+            // get current colour
             _colorPixel = GameMap.GetPixel(xPos, yPos);
             if (_colorPixel == new Color(255, 255, 255, 1)) return;
             // loop through each color map there is for tiles
-            foreach (ColorToTile colorMapping in ColorTileMapping)
+            foreach (ColorToSprite colorMapping in ColorTileMapping)
             {
                 // check if it equals the current color
                 if (colorMapping.color.Equals(_colorPixel))
@@ -85,7 +93,7 @@ namespace Assets.Scripts.Level
             }
 
                 
-            // loop through each color map there is for tiles
+            // loop through each color map there is for gameObjects
             foreach (ColorToObject colorMapping in ColorPrefabMapping)
             {
                 // Debug.Log($"{colorMapping.ObjectColor}, {_colorPixel}, {xPos}, {yPos}");
@@ -96,7 +104,7 @@ namespace Assets.Scripts.Level
                     _worldPos = new Vector3Int(xPos, yPos, 0);
                     // create prefab
                     Instantiate(colorMapping.GamePrefab, _worldPos, Quaternion.identity, transform);
-                    Debug.Log($"Created prefab at {_worldPos}");
+                    //Debug.Log($"Created prefab at {_worldPos}");
 
                 }
             }

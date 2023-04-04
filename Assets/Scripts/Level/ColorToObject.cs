@@ -1,9 +1,14 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-// TODO: Document
-[System.Serializable] public class ColorToObject
+
+namespace Assets.Scripts.Level
 {
-    public Color ObjectColor;
-    public GameObject GamePrefab;
+
+    /// <summary>
+    /// Class which maps a color to a prefab.
+    /// </summary>
+    [System.Serializable] public class ColorToObject
+    {
+        public Color ObjectColor;
+        public GameObject GamePrefab;
+    }
 }
