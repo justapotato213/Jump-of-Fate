@@ -123,7 +123,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 13
-  jumpingPower: 16
+  jumpingPower: 26
   acceleration: 10
   deceleration: 7
   velPower: 0.9
