@@ -124,11 +124,11 @@ namespace Assets.Scripts.Player
             // increase gravity when falling, to make it feel better
             if (rb.velocity.y < 0)
             {
-                rb.gravityScale = 6;
+                rb.gravityScale = 9;
             }
             else
             {
-                rb.gravityScale = 4;
+                rb.gravityScale = 6;
             }
 
         }
