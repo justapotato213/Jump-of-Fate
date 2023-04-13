@@ -42,8 +42,7 @@ def get_concat_v(im1, im2):
     dst.paste(im2, (0, im1.height))
     return dst
 
-
-height = int(input("Enter the number of slices as the height of the level: "))
+amount = int(input("Enter the amount of levels to generate: "))
 length = int(input("Enter the number of slices as the length of the level: "))
 num = int(input("Enter the number of slices you have: "))
 
@@ -60,49 +59,32 @@ sky = Image.open('./Input_Images/sky.png')
 
 # perm = list(permutations(images))
 # perm = list(map(list, perm))
-perm = [p for p in itertools.product(images, repeat=len(images))]
-print(perm)
-for i in range(len(perm)):
-    for j in range(1, len(images) + 1):
-        image = perm[i][j-1]
-        if j == 1:
+# perm = [p for p in itertools.product(images, repeat=len(images))]
+# print(perm)
+# for i in range(len(perm)):
+#     for j in range(1, len(images) + 1):
+#         image = perm[i][j-1]
+#         if j == 1:
+#             level = get_concat_h(start, image)
+#         else:
+#             level = get_concat_h(level, image)
+#     level.save('./Perm/level' + str(i) + '.png')
+
+
+# Generates Random Level
+for k in range(amount):
+    for i in range(length):
+        image = random.choice(images)
+        if i == 0:
             level = get_concat_h(start, image)
         else:
             level = get_concat_h(level, image)
-    level.save('./Perm/level' + str(i) + '.png')
+    level.save('./Levels/level' + str(k) + '.png')
+
+print("DONE")
 
 
-# Generates Random Level
-
-# for k in range(len(perm)):
-#     slices = []
-#     for l in range(1, length+2):
-#         if l == 1:
-#             slices.append(get_concat_v(sky, start))
-#             continue
-#         image = images[k[l]]
-#         print(images)
-#         slices.append(get_concat_v(sky, image))
-#     print(slices)
-#     # Combine the vertical slices horizontally
-#     for i in range(len(slices)):
-#         if i == len(slices) - 1:
-#             break
-#         if i == 0:
-#             level = get_concat_h(slices[i], slices[i+1])
-#             continue
-#         level = get_concat_h(level, slices[i+1])
-#
-#     level.save('./Level_Images/level' + str(i) + '.png')
-
-
-
-    #
-    #         level = get_concat_h(level, image)
-    # level.save('./Perm/level' + str(i) + '.png')
-
-
-# Generates Random Level
+# Generates Random Level With Vertical
 
 # for k in range(len(perm)):
 #     slices = []
@@ -124,6 +106,7 @@ for i in range(len(perm)):
 #         level = get_concat_h(level, slices[i+1])
 #
 #     level.save('./Level_Images/level' + str(i) + '.png')
+
 
 
 
