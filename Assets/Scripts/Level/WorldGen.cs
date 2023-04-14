@@ -36,16 +36,20 @@ namespace Assets.Scripts.Level
         /// Colour of current pixel
         /// </summary>
         private Color _colorPixel;
-        
+       
         void Start()
         {
+            if (GameMap == null)
+            {
+                GameMap = Resources.Load<Texture2D>("Level/sampleLevel");
+            }
             CreateLevels();
         }
 
         /// <summary>
         /// Main function which loops through all pixels in GameMap
         /// </summary>
-        private void CreateLevels()
+        public void CreateLevels()
         {
             // loop through all 
             for (int i = 0; i < GameMap.width; i++)
@@ -66,7 +70,7 @@ namespace Assets.Scripts.Level
         {
             // get current colour
             _colorPixel = GameMap.GetPixel(xPos, yPos);
-            if (_colorPixel == new Color(255, 255, 255, 1)) return;
+            if (_colorPixel == new Color(255, 255, 255, 255)) return;
             // loop through each color map there is for tiles
             foreach (ColorToSprite colorMapping in ColorTileMapping)
             {
