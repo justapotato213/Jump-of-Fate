@@ -103,7 +103,7 @@ namespace Assets.Scripts.Level
                     // set position to be where we are now
                     _worldPos = new Vector3Int(xPos, yPos, 0);
                     // create prefab
-                    Instantiate(colorMapping.GamePrefab, _worldPos, Quaternion.identity, transform);
+                    Instantiate(colorMapping.GamePrefab, new Vector3(xPos, (float)(yPos + 0.5), 0), Quaternion.identity, transform);
                     //Debug.Log($"Created prefab at {_worldPos}");
 
                 }

@@ -19,7 +19,7 @@ namespace Assets.Scripts.Player
         /// <summary>
         /// Jumping force of the character
         /// </summary>
-        public float jumpingPower = 16f;
+        public float jumpingPower = 26f;
         /// <summary>
         /// How fast the character accelerates
         /// </summary>
@@ -36,6 +36,11 @@ namespace Assets.Scripts.Player
         /// Amount of friction applied when not inputting while grounded
         /// </summary>
         public float frictionAmount = 0.2f;
+
+        /// <summary>
+        /// How much vertical velocity the jump pad applies to the player
+        /// </summary>
+        public float jumpPadPower = 50f;
 
         /// <summary>
         /// How long the character can get a jump in, after walking off an edge
@@ -65,6 +70,10 @@ namespace Assets.Scripts.Player
         /// Ground layer
         /// </summary>
         [SerializeField] private LayerMask groundLayer;
+        /// <summary>
+        /// Jump pad layer
+        /// </summary>
+        [SerializeField] private LayerMask jumpLayer;
         #endregion
 
         #region MiscVars
@@ -131,15 +140,30 @@ namespace Assets.Scripts.Player
                 rb.gravityScale = 6;
             }
 
+            // apply jump pad power if we are on one
+            if (IsOnJumpPad())
+            {
+                rb.velocity = new Vector2(rb.velocity.x, jumpPadPower);
+            }
+
         }
 
         /// <summary>
         /// Checks if they are grounded, using an OverlapCircle, and whether it intersected with the ground layer
         /// </summary>
-        /// <returns></returns>
+        /// <returns>Bool representing if they are grounded</returns>
         private bool IsGrounded()
         {
             return Physics2D.OverlapCircle(groundCheck.position, 0.2f, groundLayer);
+        }
+
+        /// <summary>
+        /// Checks if the player is currently on a jump pad, using OverlapCircle, and the jump pad layer
+        /// </summary>
+        /// <returns>Bool represetning if they are on a jump pad</returns>
+        private bool IsOnJumpPad()
+        {
+            return Physics2D.OverlapCircle(groundCheck.position, 0.2f, jumpLayer);
         }
 
         /// <summary>
