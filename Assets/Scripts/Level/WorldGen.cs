@@ -41,7 +41,7 @@ namespace Assets.Scripts.Level
         {
             if (GameMap == null)
             {
-                GameMap = Resources.Load<Texture2D>("Level/sampleLevel");
+                GameMap = Resources.Load<Texture2D>("Level/yipeeee");
             }
             CreateLevels();
         }

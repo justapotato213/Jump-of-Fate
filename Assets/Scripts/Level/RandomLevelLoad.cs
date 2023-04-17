@@ -31,6 +31,10 @@ namespace Assets.Scripts.Level
 
         }
 
+        /// <summary>
+        /// Trigger to determine if the player has reached the end of the level.
+        /// </summary>
+        /// <param name="collision">COllision that will be detected</param>
         private void OnTriggerEnter2D(Collider2D collision)
         {
             // check if the player is the one inside the box
@@ -56,6 +60,10 @@ namespace Assets.Scripts.Level
             }
         }
 
+        /// <summary>
+        /// Loads the level into the tilemap
+        /// </summary>
+        /// <param name="Level">Level to load, as a png.</param>
         public void LoadLevel(Texture2D Level)
         {
            
@@ -64,6 +72,9 @@ namespace Assets.Scripts.Level
             FoundObj.GetComponent<WorldGen>().CreateLevels();
         }
 
+        /// <summary>
+        /// Looks for the tile map
+        /// </summary>
         public void Finder()
         {
             if (GameObject.FindWithTag("TileMap"))
