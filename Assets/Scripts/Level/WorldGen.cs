@@ -103,7 +103,7 @@ namespace Assets.Scripts.Level
                     // set position to be where we are now
                     _worldPos = new Vector3Int(xPos, yPos, 0);
                     // create prefab, y is offset by 0.5 to due to the point being in the center of the object
-                    Instantiate(colorMapping.GamePrefab, new Vector3(xPos, (float)(yPos + 0.5), 0), Quaternion.identity, transform);
+                    Instantiate(colorMapping.GamePrefab, new Vector3(xPos, (float)(yPos + 0.4), 0), Quaternion.identity, transform);
                     //Debug.Log($"Created prefab at {_worldPos}");
 
                 } 

@@ -207,11 +207,12 @@ namespace Assets.Scripts.Player
         }
 
         /// <summary>
-        /// Forces character class to teleport to its respawnPoint
+        /// Respawn character to its respawn point
         /// </summary>
         public void Respawn()
         {
             rb.position = respawnPoint.transform.position;
+            rb.velocity = Vector2.zero;
         }
     }
 
