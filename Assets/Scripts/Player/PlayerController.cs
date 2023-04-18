@@ -85,11 +85,6 @@ namespace Assets.Scripts.Player
         /// Respawn point of the character
         /// </summary>
         public GameObject respawnPoint;
-
-        /// <summary>
-        /// Static Enemy Layer
-        /// </summary>
-        [SerializeField] private LayerMask staticEnemyLayer;
         #endregion
 
         void Update()
@@ -149,12 +144,6 @@ namespace Assets.Scripts.Player
             if (IsOnObject(jumpLayer))
             {
                 rb.velocity = new Vector2(rb.velocity.x, jumpPadPower);
-            }
-
-            // kill player if they are on top of a static enemy
-            if (IsOnObject(staticEnemyLayer))
-            {
-                Respawn();
             }
         }
 
