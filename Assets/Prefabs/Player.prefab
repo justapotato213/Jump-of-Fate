@@ -140,6 +140,9 @@ MonoBehaviour:
     m_Bits: 8
   respawnPrefab: {fileID: 3777854613364253548, guid: 9327be81944318a40aafe016a3598416, type: 3}
   respawnPoint: {fileID: 0}
+  staticEnemyLayer:
+    serializedVersion: 2
+    m_Bits: 128
 --- !u!61 &901944296129551789
 BoxCollider2D:
   m_ObjectHideFlags: 0

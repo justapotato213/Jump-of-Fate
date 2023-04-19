@@ -312,11 +312,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85e60a695ee45df4ab486e21563371f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-<<<<<<< HEAD
-  GameMap: {fileID: 2800000, guid: 595fab17cc976184392977e89c73b268, type: 3}
-=======
-  GameMap: {fileID: 0}
->>>>>>> 02d9b347735e1084dcde831b8dc0c804f40a6cd9
+
   ColorTileMapping:
   - color: {r: 0, g: 1, b: 0, a: 1}
     sprite: {fileID: 7482667652216324306, guid: b5da1848842b6c4469abb4acd85af758, type: 3}
@@ -325,13 +321,13 @@ MonoBehaviour:
     GamePrefab: {fileID: 3777854613364253548, guid: 9327be81944318a40aafe016a3598416, type: 3}
   - ObjectColor: {r: 1, g: 0, b: 0, a: 1}
     GamePrefab: {fileID: 901944296129551788, guid: baadb0397a845a64d8411235b3dd12c3, type: 3}
-<<<<<<< HEAD
   - ObjectColor: {r: 1, g: 1, b: 0, a: 1}
+    GamePrefab: {fileID: 9064836967650123910, guid: a4cbe83507f86f94193cd6465d42a845, type: 3}
+=======
     GamePrefab: {fileID: 5659968100178372091, guid: a72d8fa7e3d9535419362e5cb6d07831, type: 3}
 =======
   - ObjectColor: {r: 0, g: 1, b: 1, a: 1}
     GamePrefab: {fileID: 1681271803129246181, guid: f9dd20b31836eca4b9e3630a440fd174, type: 3}
->>>>>>> 02d9b347735e1084dcde831b8dc0c804f40a6cd9
 --- !u!66 &33285368
 CompositeCollider2D:
   m_ObjectHideFlags: 0
