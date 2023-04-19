@@ -128,12 +128,16 @@ MonoBehaviour:
   deceleration: 7
   velPower: 0.9
   frictionAmount: 0.2
+  jumpPadPower: 50
   hangTime: 0.15
   rb: {fileID: 901944296129551792}
   groundCheck: {fileID: 901944297249742475}
   groundLayer:
     serializedVersion: 2
     m_Bits: 64
+  jumpLayer:
+    serializedVersion: 2
+    m_Bits: 8
   respawnPrefab: {fileID: 3777854613364253548, guid: 9327be81944318a40aafe016a3598416, type: 3}
   respawnPoint: {fileID: 0}
 --- !u!61 &901944296129551789

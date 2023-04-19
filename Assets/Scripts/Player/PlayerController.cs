@@ -19,7 +19,7 @@ namespace Assets.Scripts.Player
         /// <summary>
         /// Jumping force of the character
         /// </summary>
-        public float jumpingPower = 16f;
+        public float jumpingPower = 26f;
         /// <summary>
         /// How fast the character accelerates
         /// </summary>
@@ -36,6 +36,11 @@ namespace Assets.Scripts.Player
         /// Amount of friction applied when not inputting while grounded
         /// </summary>
         public float frictionAmount = 0.2f;
+
+        /// <summary>
+        /// How much vertical velocity the jump pad applies to the player
+        /// </summary>
+        public float jumpPadPower = 50f;
 
         /// <summary>
         /// How long the character can get a jump in, after walking off an edge
@@ -65,6 +70,10 @@ namespace Assets.Scripts.Player
         /// Ground layer
         /// </summary>
         [SerializeField] private LayerMask groundLayer;
+        /// <summary>
+        /// Jump pad layer
+        /// </summary>
+        [SerializeField] private LayerMask jumpLayer;
         #endregion
 
         #region MiscVars
@@ -76,6 +85,11 @@ namespace Assets.Scripts.Player
         /// Respawn point of the character
         /// </summary>
         public GameObject respawnPoint;
+
+        /// <summary>
+        /// Static Enemy Layer
+        /// </summary>
+        [SerializeField] private LayerMask staticEnemyLayer;
         #endregion
 
         void Update()
@@ -131,15 +145,27 @@ namespace Assets.Scripts.Player
                 rb.gravityScale = 6;
             }
 
+            // apply jump pad power if we are on one
+            if (IsOnObject(jumpLayer))
+            {
+                rb.velocity = new Vector2(rb.velocity.x, jumpPadPower);
+            }
+
+            // kill player if they are on top of a static enemy
+            if (IsOnObject(staticEnemyLayer))
+            {
+                Respawn();
+            }
         }
 
         /// <summary>
-        /// Checks if they are grounded, using an OverlapCircle, and whether it intersected with the ground layer
+        /// Checks if groundcheck is currently on top of an object
         /// </summary>
-        /// <returns></returns>
-        private bool IsGrounded()
+        /// <param name="layer">The layer of the object</param>
+        /// <returns>A bool representing if they are on a object </returns>
+        private bool IsOnObject(LayerMask layer)
         {
-            return Physics2D.OverlapCircle(groundCheck.position, 0.2f, groundLayer);
+            return Physics2D.OverlapCircle(groundCheck.position, 0.2f, layer);
         }
 
         /// <summary>
@@ -162,7 +188,7 @@ namespace Assets.Scripts.Player
         private void CalcHangTime()
         {
             // checks if its grounded, and if so reset their hang counter
-            if (IsGrounded())
+            if (IsOnObject(groundLayer))
             {
                 hangCounter = hangTime;
             }
