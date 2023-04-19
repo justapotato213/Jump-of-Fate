@@ -1,5 +1,8 @@
 ﻿using UnityEngine;
 
+// TODO: 
+// Optimize, currently will run forever, needed due to level loading reseting the player
+
 namespace Assets.Scripts.Player
 {
     /// <summary>
@@ -23,7 +26,7 @@ namespace Assets.Scripts.Player
                 // set the proper variable
                 GetComponent<PlayerController>().respawnPoint = foundObj;
                 // delete self from gameObject
-                Destroy(this);
+                // Destroy(this);
             }
 
         }

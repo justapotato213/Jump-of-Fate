@@ -1,5 +1,8 @@
 ﻿using UnityEngine;
 
+// TODO: 
+// Optimize, currently will run forever, needed due to level loading reseting the player
+
 namespace Assets.Scripts.Camera
 {
     /// <summary>
@@ -23,7 +26,7 @@ namespace Assets.Scripts.Camera
                 // set the proper variable
                 GetComponent<FollowPlayer>().target = foundObj.transform;
                 // delete self from gameObject
-                Destroy(this);
+                // Destroy(this);
             }
 
         }
