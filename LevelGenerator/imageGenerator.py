@@ -55,7 +55,8 @@ for i in range(1, num + 1):
     images.append(im)
 
 start = Image.open('./Input_Images/start.png')
-sky = Image.open('./Input_Images/sky.png')
+end = Image.open('./Input_Images/end.png')
+# sky = Image.open('../../Input_Images/sky.png')
 
 # perm = list(permutations(images))
 # perm = list(map(list, perm))
@@ -79,6 +80,7 @@ for k in range(amount):
             level = get_concat_h(start, image)
         else:
             level = get_concat_h(level, image)
+    level = get_concat_h(level, end)
     level.save('./Levels/level' + str(k) + '.png')
 
 print("DONE")
