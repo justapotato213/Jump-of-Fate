@@ -27,6 +27,7 @@ namespace Assets.Scripts.Level
             {
                 collision.gameObject.GetComponent<PlayerController>().Respawn();
             }
+
         }
     }
 
