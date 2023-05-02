@@ -1,8 +1,7 @@
-
 from PIL import Image
 import random
-from itertools import permutations
-import itertools
+# from itertools import permutations
+# import itertools
 
 
 def get_concat_h(im1, im2):
@@ -42,21 +41,88 @@ def get_concat_v(im1, im2):
     dst.paste(im2, (0, im1.height))
     return dst
 
-amount = int(input("Enter the amount of levels to generate: "))
-length = int(input("Enter the number of slices as the length of the level: "))
-num = int(input("Enter the number of slices you have: "))
 
-images = []
+def image_storage(num):
+    """
+    Function to store all input images
 
-# Store slices in a list
-for i in range(1, num + 1):
-    name = "im" + str(i)
-    im = Image.open('./Input_Images/' + name + '.png')
-    images.append(im)
+    Parameters
+    ----------
+    num : the number of slices
+
+    Returns
+    --------
+    A list with all the slices
+    """
+    images = []
+    # Store slices in a list
+    for i in range(1, num + 1):
+        name = "im" + str(i)
+        im = Image.open('./Input_Images/' + name + '.png')
+        images.append(im)
+
+    return images
+
+
+def randomizer(amount, length, images):
+    """
+    Saves the generated random levels to a folder
+
+    Parameters
+    ----------
+    amount : the num of images to generate
+    length : the length of each level
+    images : list with all the images
+    """
+    for k in range(amount):
+        for i in range(length):
+            image = random.choice(images)
+            if i == 0:
+                level = get_concat_h(start, image)
+            else:
+                level = get_concat_h(level, image)
+        level = get_concat_h(level, end)
+        level.save('./Levels/level' + str(k) + '.png')
+    return
+
+
+def tester(amount, images):
+    """
+    Function to combine images vertically
+
+    Parameters
+    ----------
+    amount : number of slices
+    images : list with all the images
+    """
+    for i in range(amount):
+        image = images[i]
+        level = get_concat_h(start, image)
+        level = get_concat_h(level, end)
+        level.save('./Levels/test' + str(i) + '.png')
+    return
+
+
+# Change this value for getting test levels vs actual levels
+test = False
 
 start = Image.open('./Input_Images/start.png')
 end = Image.open('./Input_Images/end.png')
-# sky = Image.open('../../Input_Images/sky.png')
+
+if test is False:
+    am = int(input("Enter the amount of levels to generate: "))
+    size = int(input("Enter the number of slices as the length of the level: "))
+    num = int(input("Enter the number of slices you have: "))
+    ims = image_storage(num)
+    randomizer(am, size, ims)
+else:
+    num = int(input("Enter the number of slices you have: "))
+    ims = image_storage(num)
+    tester(num, ims)
+
+print("DONE")
+
+# Permutations Code (OLD)
 
 # perm = list(permutations(images))
 # perm = list(map(list, perm))
@@ -72,21 +138,7 @@ end = Image.open('./Input_Images/end.png')
 #     level.save('./Perm/level' + str(i) + '.png')
 
 
-# Generates Random Level
-for k in range(amount):
-    for i in range(length):
-        image = random.choice(images)
-        if i == 0:
-            level = get_concat_h(start, image)
-        else:
-            level = get_concat_h(level, image)
-    level = get_concat_h(level, end)
-    level.save('./Levels/level' + str(k) + '.png')
-
-print("DONE")
-
-
-# Generates Random Level With Vertical
+# Generates Random Level With Vertical (OLD)
 
 # for k in range(len(perm)):
 #     slices = []
