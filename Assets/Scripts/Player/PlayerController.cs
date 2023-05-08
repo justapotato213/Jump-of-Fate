@@ -85,6 +85,10 @@ namespace Assets.Scripts.Player
         /// Respawn point of the character
         /// </summary>
         public GameObject respawnPoint;
+        /// <summary>
+        /// Dynamic enemy layer for hitboxes
+        /// </summary>
+        public LayerMask dynamicEnemy;
         #endregion
 
         void Update()
@@ -105,6 +109,7 @@ namespace Assets.Scripts.Player
 
             // jumping 
             Jump();
+
         }
 
         private void FixedUpdate()

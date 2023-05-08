@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -62,8 +60,21 @@ public class PauseMenu : MonoBehaviour
         Application.Quit();
     }
 
+    /// <summary>
+    /// Returns to Main Menu
+    /// </summary>
     public void mainMenu()
     {
         SceneManager.LoadScene("MainMenu");
+    }
+
+    /// <summary>
+    /// Settings Menu 
+    /// </summary>
+    public void settingsMenu()
+    {
+        // SceneManager.LoadScene("Settings");
+
+        // Will be finished at a later data
     }
 }
