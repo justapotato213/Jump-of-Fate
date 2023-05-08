@@ -1,64 +1,37 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class PauseMenu : MonoBehaviour
+namespace Assets.Scripts.Menu
 {
-    public GameObject pauseMenu;
-
-    public bool isPaused = false;
-
-
-    // Start is called before the first frame update
-    void Start()
+    public class PauseMenu : MonoBehaviour
     {
-        pauseMenu.SetActive(false);
-        Time.timeScale = 1f;
-    }
+        public GameObject pauseMenu;
 
-    // Update is called once per frame
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        public bool isPaused = false;
+
+
+        // Start is called before the first frame update
+        void Start()
         {
-            if (isPaused)
-            {
-                ResumeGame();
-            }
-
-            else
-            {
-                PauseGame();
-            }
+            pauseMenu.SetActive(false);
+            Time.timeScale = 1f;
         }
-        
-    }
 
-    /// <summary>
-    /// Pauses the game
-    /// </summary>
-    public void PauseGame()
-    {
-        pauseMenu.SetActive(true);
-        Time.timeScale = 0f;
-        isPaused = true;
-    }
+        // Update is called once per frame
+        void Update()
+        {
+            if (Input.GetKeyDown(KeyCode.Escape))
+            {
+                if (isPaused)
+                {
+                    ResumeGame();
+                }
 
-    /// <summary>
-    /// Resumes the game
-    /// </summary>
-    public void ResumeGame()
-    {
-        pauseMenu.SetActive(false);
-        Time.timeScale = 1f;
-        isPaused = false;
-    }
-    /// <summary>
-    /// Quits Application
-    /// </summary>
-    public void QuitGame()
-    {
-        Application.Quit();
-    }
+                else
+                {
+                    PauseGame();
+                }
+            }
 
     /// <summary>
     /// Returns to Main Menu
@@ -66,6 +39,39 @@ public class PauseMenu : MonoBehaviour
     public void mainMenu()
     {
         SceneManager.LoadScene("MainMenu");
+        }
+
+        /// <summary>
+        /// Pauses the game
+        /// </summary>
+        public void PauseGame()
+        {
+            pauseMenu.SetActive(true);
+            Time.timeScale = 0f;
+            isPaused = true;
+        }
+
+        /// <summary>
+        /// Resumes the game
+        /// </summary>
+        public void ResumeGame()
+        {
+            pauseMenu.SetActive(false);
+            Time.timeScale = 1f;
+            isPaused = false;
+        }
+        /// <summary>
+        /// Quits Application
+        /// </summary>
+        public void QuitGame()
+        {
+            Application.Quit();
+        }
+
+        public void mainMenu()
+        {
+            SceneManager.LoadScene("MainMenu");
+        }
     }
 
     /// <summary>
@@ -78,3 +84,4 @@ public class PauseMenu : MonoBehaviour
         // Will be finished at a later data
     }
 }
+

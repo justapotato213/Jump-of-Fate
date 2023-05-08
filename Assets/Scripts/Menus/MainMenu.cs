@@ -3,22 +3,27 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class MainMenu : MonoBehaviour
+
+namespace Assets.Scripts.Menu
 {
-    /// <summary>
-    /// Loads the platforming game 
-    /// </summary>
-    public void PlayGame()
+    public class MainMenu : MonoBehaviour
     {
-        Debug.Log("Play Button Pressed");
-        SceneManager.LoadScene("SampleScene");
+        /// <summary>
+        /// Loads the platforming game 
+        /// </summary>
+        public void PlayGame()
+        {
+            Debug.Log("Play Button Pressed");
+            SceneManager.LoadScene("SampleScene");
+        }
+
+        /// <summary>
+        /// Closes the application
+        /// </summary>
+        public void QuitGame()
+        {
+            Application.Quit();
+        }
     }
 
-    /// <summary>
-    /// Closes the application
-    /// </summary>
-    public void QuitGame()
-    {
-        Application.Quit();
-    }
 }

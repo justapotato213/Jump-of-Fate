@@ -55,6 +55,17 @@ namespace Assets.Scripts.Player
         /// Direction of the character
         /// </summary>
         private bool isFacingRight = true;
+
+        /// <summary>
+        /// How many additional jumps the player can make
+        /// </summary>
+        public int numberOfAdditionalJumps = 0;
+
+        /// <summary>
+        /// How mnay additional jumps the player has left
+        /// </summary>
+        public int jumpsLeft = 0;
+
         #endregion
 
         #region PhysicsVars
@@ -183,10 +194,11 @@ namespace Assets.Scripts.Player
         /// </summary>
         private void CalcHangTime()
         {
-            // checks if its grounded, and if so reset their hang counter
+            // checks if its grounded, and if so reset their hang counter and their jump counter
             if (IsOnObject(groundLayer))
             {
                 hangCounter = hangTime;
+                jumpsLeft = numberOfAdditionalJumps;
             }
             // otherwise, minus the elapsed time
             else
@@ -215,6 +227,12 @@ namespace Assets.Scripts.Player
             if (Input.GetButtonUp("Jump") && rb.velocity.y > 0f)
             {
                 rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * 0.5f);
+            }
+
+            if (Input.GetButtonDown("Jump") && jumpsLeft > 0)
+            {
+                jumpsLeft -= 1;
+                rb.velocity = new Vector2(rb.velocity.x, jumpingPower);
             }
 
         }
