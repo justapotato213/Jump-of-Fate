@@ -13,11 +13,13 @@ namespace Assets.Scripts.Menu {
         private void Start()
         {
             upgradeMenu.SetActive(true);
+            Time.timeScale = 0f;
         }
 
         public void Disable()
         {
             upgradeMenu.SetActive(false);
+            Time.timeScale = 1f;
         }
 
         public void AddSpeed()
