@@ -6,6 +6,8 @@ TagManager:
   tags:
   - TileMap
   - UpgradeMenu
+  - StatController
+  - UpgradeController
   layers:
   - Default
   - TransparentFX

@@ -21,6 +21,11 @@ public class PlayerStats : MonoBehaviour
     /// </summary>
     public int numberofJumps = 0;
 
+    /// <summary>
+    /// How many levels the player has beaten
+    /// </summary>
+    public int completedLevels = 0;
+
     // if we ever polish, change this to be more efficient, run only once level has finished loading
     // or change to different system rather than a workaround
     private void Update()

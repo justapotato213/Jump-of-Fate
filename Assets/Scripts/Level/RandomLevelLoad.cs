@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.Tilemaps;
-using Assets.Scripts.Menu;
+using Assets.Scripts.Menus;
 
 namespace Assets.Scripts.Level
 {
@@ -19,6 +19,10 @@ namespace Assets.Scripts.Level
         /// </summary>
         public GameObject upgrade;
 
+        /// <summary>
+        /// Player stats
+        /// </summary>
+        public GameObject playerStatsObj; 
 
         // Start is called before the first frame update
         void Start()
@@ -26,7 +30,9 @@ namespace Assets.Scripts.Level
             // find the tilemap
             TileMap = Finder("TileMap");
             // find the upgrade menu
-            upgrade = Finder("UpgradeMenu");
+            upgrade = Finder("UpgradeController");
+            // find the stat controller
+            playerStatsObj = Finder("StatController");
         }
 
         /// <summary>
@@ -38,11 +44,15 @@ namespace Assets.Scripts.Level
             // check if the player is the one inside the box
             if (collision.name == "Player(Clone)")
             {
-                Debug.Log(upgrade.activeSelf);
-                // enable the upgrade menu, only if it is not already active
-                if (!upgrade.activeSelf)
+                // the player stats
+                var playerStats = playerStatsObj.GetComponent<PlayerStats>();
+                // update the completed level count
+                playerStats.completedLevels++;
+
+                // enable the upgrade menu, only if it is not already active, and the current level is divisible by 5
+                if (!upgrade.GetComponent<UpgradeController>().isDisabled && playerStats.completedLevels % 5 == 0)
                 {
-                    upgrade.SetActive(true);
+                    upgrade.GetComponent<UpgradeController>().EnableMenu();
                     Time.timeScale = 0f;
                 }
 
@@ -61,9 +71,6 @@ namespace Assets.Scripts.Level
 
                 // load random level
                 LoadLevel(level);
-
-                
-
             }
         }
 
@@ -84,6 +91,7 @@ namespace Assets.Scripts.Level
         /// </summary>
         public GameObject Finder(string tag)
         {
+            
             if (GameObject.FindWithTag(tag))
             {
                 return GameObject.FindWithTag(tag);

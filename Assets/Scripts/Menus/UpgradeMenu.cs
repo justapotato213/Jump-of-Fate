@@ -5,10 +5,16 @@ using Assets.Scripts.Player;
 
 
 
-namespace Assets.Scripts.Menu {
+namespace Assets.Scripts.Menus {
     public class UpgradeMenu : MonoBehaviour
     {
+        /// <summary>
+        /// The object which contains the players stats
+        /// </summary>
         public GameObject playerStats;
+        /// <summary>
+        /// The upgrade menu object
+        /// </summary>
         public GameObject upgradeMenu;
 
         private void Start()
@@ -16,15 +22,6 @@ namespace Assets.Scripts.Menu {
             // when we start, get the user to choose an upgrade
             upgradeMenu.SetActive(true);
             Time.timeScale = 0f;
-        }
-
-        /// <summary>
-        /// Starts time time once this object gets disabled
-        /// </summary>
-        public void Disable()
-        {
-            upgradeMenu.SetActive(false);
-            Time.timeScale = 1f;
         }
 
         /// <summary>

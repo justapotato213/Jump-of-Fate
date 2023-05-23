@@ -20,6 +20,10 @@ namespace Assets.Scripts.Level
 
         }
 
+        /// <summary>
+        /// Respawns the player
+        /// </summary>
+        /// <param name="collision">The collider which collided with this object</param>
         private void OnTriggerEnter2D(Collider2D collision)
         {
             // respawn player
