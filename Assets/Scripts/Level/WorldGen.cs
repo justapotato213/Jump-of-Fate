@@ -36,6 +36,11 @@ namespace Assets.Scripts.Level
         /// Colour of current pixel
         /// </summary>
         private Color _colorPixel;
+
+        /// <summary>
+        /// The upgrade menu
+        /// </summary>
+        public GameObject upgradeMenu;
        
         void Start()
         {
@@ -47,6 +52,8 @@ namespace Assets.Scripts.Level
                 GameMap = level;
             }
             CreateLevels();
+
+            
         }
 
         /// <summary>

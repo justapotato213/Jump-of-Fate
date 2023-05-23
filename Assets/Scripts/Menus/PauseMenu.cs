@@ -1,11 +1,13 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
-
+// TODO: DOCUMENT
 namespace Assets.Scripts.Menu
 {
     public class PauseMenu : MonoBehaviour
     {
         public GameObject pauseMenu;
+
+        public GameObject upgradeMenu;
 
         public bool isPaused = false;
 
@@ -13,6 +15,7 @@ namespace Assets.Scripts.Menu
         // Start is called before the first frame update
         void Start()
         {
+            Debug.Log(upgradeMenu);
             pauseMenu.SetActive(false);
             Time.timeScale = 1f;
         }
@@ -27,18 +30,19 @@ namespace Assets.Scripts.Menu
                     ResumeGame();
                 }
 
-                else
+                else if(!upgradeMenu.activeSelf)
                 {
                     PauseGame();
                 }
             }
+        }
 
-    /// <summary>
-    /// Returns to Main Menu
-    /// </summary>
-    public void mainMenu()
-    {
-        SceneManager.LoadScene("MainMenu");
+        /// <summary>
+        /// Returns to Main Menu
+        /// </summary>
+        public void mainMenu()
+        {
+            SceneManager.LoadScene("MainMenu");
         }
 
         /// <summary>
@@ -68,20 +72,15 @@ namespace Assets.Scripts.Menu
             Application.Quit();
         }
 
-        public void mainMenu()
+        /// <summary>
+        /// Settings Menu 
+        /// </summary>
+        public void settingsMenu()
         {
-            SceneManager.LoadScene("MainMenu");
+            // SceneManager.LoadScene("Settings");
+
+            // Will be finished at a later data
         }
-    }
-
-    /// <summary>
-    /// Settings Menu 
-    /// </summary>
-    public void settingsMenu()
-    {
-        // SceneManager.LoadScene("Settings");
-
-        // Will be finished at a later data
     }
 }
 

@@ -12,8 +12,7 @@ namespace Assets.Scripts.Menu {
 
         private void Start()
         {
-            
-            
+            upgradeMenu.SetActive(true);
         }
 
         public void Disable()

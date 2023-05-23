@@ -52,7 +52,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 3
+  m_GravityScale: 0.1
   m_Material: {fileID: 0}
   m_Interpolate: 1
   m_SleepingMode: 0
@@ -142,6 +142,9 @@ MonoBehaviour:
     m_Bits: 8
   respawnPrefab: {fileID: 3777854613364253548, guid: 9327be81944318a40aafe016a3598416, type: 3}
   respawnPoint: {fileID: 0}
+  dynamicEnemy:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!61 &901944296129551789
 BoxCollider2D:
   m_ObjectHideFlags: 0

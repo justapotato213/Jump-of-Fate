@@ -27,8 +27,6 @@ namespace Assets.Scripts.Level
             TileMap = Finder("TileMap");
             // find the upgrade menu
             upgrade = Finder("UpgradeMenu");
-            // disable the menu 
-            upgrade.GetComponent<UpgradeMenu>().Disable();
         }
 
         /// <summary>
@@ -40,10 +38,13 @@ namespace Assets.Scripts.Level
             // check if the player is the one inside the box
             if (collision.name == "Player(Clone)")
             {
-                // enable the upgrade menu
-                upgrade.SetActive(true);
-                Time.timeScale = 0f;
-               
+                Debug.Log(upgrade.activeSelf);
+                // enable the upgrade menu, only if it is not already active
+                if (!upgrade.activeSelf)
+                {
+                    upgrade.SetActive(true);
+                    Time.timeScale = 0f;
+                }
 
                 // delete all tiles
                 TileMap.GetComponent<Tilemap>().ClearAllTiles();
