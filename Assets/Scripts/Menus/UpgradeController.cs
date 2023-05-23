@@ -5,13 +5,14 @@ namespace Assets.Scripts.Menus
 {
     public class UpgradeController : MonoBehaviour
     {
+        /// <summary>
+        /// The upgrade menu object
+        /// </summary>
         public GameObject upgrade;
         private void Start()
         {
-            Debug.Log(upgrade);
             // disable the menu 
             var upgradeCode = upgrade.GetComponent<UpgradeMenu>();
-            Debug.Log(upgrade);
             if (upgrade.activeSelf)
             {
                 upgradeCode.Disable();

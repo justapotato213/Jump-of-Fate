@@ -5,10 +5,19 @@ namespace Assets.Scripts.Menu
 {
     public class PauseMenu : MonoBehaviour
     {
+        /// <summary>
+        /// The gameobject this script belongs to
+        /// </summary>
         public GameObject pauseMenu;
 
+        /// <summary>
+        /// The upgrade menu game object
+        /// </summary>
         public GameObject upgradeMenu;
 
+        /// <summary>
+        /// Whether the game is currently paused
+        /// </summary>
         public bool isPaused = false;
 
 
@@ -29,8 +38,7 @@ namespace Assets.Scripts.Menu
                 {
                     ResumeGame();
                 }
-
-                else if(!upgradeMenu.activeSelf)
+                else if (Time.timeScale == 1 && !isPaused)
                 {
                     PauseGame();
                 }
