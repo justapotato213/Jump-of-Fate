@@ -47,12 +47,11 @@ namespace Assets.Scripts.Level
                 // the player stats
                 var playerStats = playerStatsObj.GetComponent<PlayerStats>();
                 // update the completed level count
-                playerStats.completedLevels++;
+                playerStats.CompletedLevels++;
 
-                Debug.Log(upgrade);
 
-                // enable the upgrade menu, only if it is not already active, and the current level is divisible by 5
-                if (!upgrade.GetComponent<UpgradeController>().isDisabled && playerStats.completedLevels % 5 == 0)
+                // enable the upgrade menu, only if it is not already active, and the current level is divisible by 5, and its not the end of the game
+                if (!upgrade.GetComponent<UpgradeController>().isDisabled && playerStats.CompletedLevels % 5 == 0 && playerStats.CompletedLevels != 20)
                 {
                     upgrade.GetComponent<UpgradeController>().EnableMenu();
                     Time.timeScale = 0f;

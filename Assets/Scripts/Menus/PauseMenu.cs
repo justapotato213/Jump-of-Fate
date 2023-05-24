@@ -50,6 +50,7 @@ namespace Assets.Scripts.Menu
         /// </summary>
         public void mainMenu()
         {
+            
             SceneManager.LoadScene("MainMenu");
         }
 
