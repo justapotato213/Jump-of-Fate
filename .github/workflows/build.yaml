@@ -54,7 +54,7 @@ jobs:
       - name: Add executable flag
         run: |
           if [[ "$MATRIX_OS" =~ ^(ubuntu|macos)-.*$ ]]; then
-            chmod -R +x build/
+            sudo chmod -R +x build/
           fi
         env:
           MATRIX_OS: ${{ matrix.os }}
