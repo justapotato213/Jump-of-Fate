@@ -49,6 +49,8 @@ namespace Assets.Scripts.Level
                 // update the completed level count
                 playerStats.completedLevels++;
 
+                Debug.Log(upgrade);
+
                 // enable the upgrade menu, only if it is not already active, and the current level is divisible by 5
                 if (!upgrade.GetComponent<UpgradeController>().isDisabled && playerStats.completedLevels % 5 == 0)
                 {
