@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Assets.Scripts.Player;
+using UnityEngine.SceneManagement;
 
 public class PlayerStats : MonoBehaviour
 {
@@ -22,9 +23,37 @@ public class PlayerStats : MonoBehaviour
     public int numberofJumps = 0;
 
     /// <summary>
-    /// How many levels the player has beaten
+    /// The game finished text.
     /// </summary>
-    public int completedLevels = 0;
+    public GameObject finishedText;
+
+    /// <summary>
+    /// How many levels the player has beaten (backing store)
+    /// </summary>
+    [SerializeField]
+    private int _completedLevels;
+
+    /// <summary>
+    /// Public counter for completed levels. Displays game finished text once 20 levels have been beat.
+    /// </summary>
+    public int CompletedLevels
+    {
+        get => _completedLevels;
+        set
+        {
+            _completedLevels = value;
+            if (_completedLevels == 20)
+            {
+                // show the finished game screen
+                finishedText.SetActive(true);
+                // freeze time
+                Time.timeScale = 0f;
+                // wait time
+                StartCoroutine(Wait());
+               
+            }
+        }
+    }
 
     // if we ever polish, change this to be more efficient, run only once level has finished loading
     // or change to different system rather than a workaround
@@ -41,4 +70,16 @@ public class PlayerStats : MonoBehaviour
             script.numberOfAdditionalJumps = numberofJumps;
         }
     }
+
+    /// <summary>
+    /// Waits 5 seconds
+    /// </summary>
+
+    private IEnumerator Wait()
+    {
+        yield return new WaitForSecondsRealtime(5);
+        // load scene
+        SceneManager.LoadScene("MainMenu");
+    }
+
 }
