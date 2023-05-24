@@ -219,21 +219,26 @@ namespace Assets.Scripts.Player
                 
                 rb.velocity = new Vector2(rb.velocity.x, jumpingPower);
             }
+
+            else if (Input.GetButtonDown("Jump") && jumpsLeft > 0)
+            {
+                jumpsLeft -= 1;
+                rb.velocity = new Vector2(rb.velocity.x, jumpingPower);
+            }
+    
             else if (Input.GetButtonDown("Jump"))
             {
                 Debug.Log(hangTime);
             }
+
+
             // checking if they let go during their jump, if so, make them lose y velocity
             if (Input.GetButtonUp("Jump") && rb.velocity.y > 0f)
             {
                 rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * 0.5f);
             }
 
-            if (Input.GetButtonDown("Jump") && jumpsLeft > 0)
-            {
-                jumpsLeft -= 1;
-                rb.velocity = new Vector2(rb.velocity.x, jumpingPower);
-            }
+            
 
         }
 
