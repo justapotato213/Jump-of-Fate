@@ -1,80 +1,94 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
-
-public class PauseMenu : MonoBehaviour
+// TODO: DOCUMENT
+namespace Assets.Scripts.Menu
 {
-    public GameObject pauseMenu;
-
-    public bool isPaused = false;
-
-
-    // Start is called before the first frame update
-    void Start()
+    public class PauseMenu : MonoBehaviour
     {
-        pauseMenu.SetActive(false);
-        Time.timeScale = 1f;
-    }
+        /// <summary>
+        /// The gameobject this script belongs to
+        /// </summary>
+        public GameObject pauseMenu;
 
-    // Update is called once per frame
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        /// <summary>
+        /// The upgrade menu game object
+        /// </summary>
+        public GameObject upgradeMenu;
+
+        /// <summary>
+        /// Whether the game is currently paused
+        /// </summary>
+        public bool isPaused = false;
+
+
+        // Start is called before the first frame update
+        void Start()
         {
-            if (isPaused)
-            {
-                ResumeGame();
-            }
+            Debug.Log(upgradeMenu);
+            pauseMenu.SetActive(false);
+            Time.timeScale = 1f;
+        }
 
-            else
+        // Update is called once per frame
+        void Update()
+        {
+            if (Input.GetKeyDown(KeyCode.Escape))
             {
-                PauseGame();
+                if (isPaused)
+                {
+                    ResumeGame();
+                }
+                else if (Time.timeScale == 1 && !isPaused)
+                {
+                    PauseGame();
+                }
             }
         }
-        
-    }
 
-    /// <summary>
-    /// Pauses the game
-    /// </summary>
-    public void PauseGame()
-    {
-        pauseMenu.SetActive(true);
-        Time.timeScale = 0f;
-        isPaused = true;
-    }
+        /// <summary>
+        /// Returns to Main Menu
+        /// </summary>
+        public void mainMenu()
+        {
+            SceneManager.LoadScene("MainMenu");
+        }
 
-    /// <summary>
-    /// Resumes the game
-    /// </summary>
-    public void ResumeGame()
-    {
-        pauseMenu.SetActive(false);
-        Time.timeScale = 1f;
-        isPaused = false;
-    }
-    /// <summary>
-    /// Quits Application
-    /// </summary>
-    public void QuitGame()
-    {
-        Application.Quit();
-    }
+        /// <summary>
+        /// Pauses the game
+        /// </summary>
+        public void PauseGame()
+        {
+            pauseMenu.SetActive(true);
+            Time.timeScale = 0f;
+            isPaused = true;
+        }
 
-    /// <summary>
-    /// Returns to Main Menu
-    /// </summary>
-    public void mainMenu()
-    {
-        SceneManager.LoadScene("MainMenu");
-    }
+        /// <summary>
+        /// Resumes the game
+        /// </summary>
+        public void ResumeGame()
+        {
+            pauseMenu.SetActive(false);
+            Time.timeScale = 1f;
+            isPaused = false;
+        }
+        /// <summary>
+        /// Quits Application
+        /// </summary>
+        public void QuitGame()
+        {
+            Application.Quit();
+        }
 
-    /// <summary>
-    /// Settings Menu 
-    /// </summary>
-    public void settingsMenu()
-    {
-        // SceneManager.LoadScene("Settings");
+        /// <summary>
+        /// Settings Menu 
+        /// </summary>
+        public void settingsMenu()
+        {
+            // SceneManager.LoadScene("Settings");
 
-        // Will be finished at a later data
+            // Will be finished at a later data
+        }
     }
 }
+

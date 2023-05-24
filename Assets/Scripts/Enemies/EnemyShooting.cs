@@ -29,26 +29,29 @@ public class EnemyShooting : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        player = GameObject.FindGameObjectsWithTag("Player")[0];
+        
     }
 
     // Update is called once per frame
     void Update()
-    { 
-
-        float distance = Vector2.Distance(transform.position, player.transform.position);
-        // Debug.Log(distance);
-
-        if (distance < range)
+    {
+        player = GameObject.FindWithTag("Player");
+        if (player != null)
         {
-            timer += Time.deltaTime;
+            float distance = Vector2.Distance(transform.position, player.transform.position);
+            // Debug.Log(distance);
 
-            if (timer > 2)
+            if (distance < range)
             {
-                timer = 0;
-                shoot();
+                timer += Time.deltaTime;
+
+                if (timer > 2)
+                {
+                    timer = 0;
+                    shoot();
+                }
             }
-        }
+        }  
     }
 
     /// <summary>

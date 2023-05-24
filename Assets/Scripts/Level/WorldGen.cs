@@ -36,6 +36,11 @@ namespace Assets.Scripts.Level
         /// Colour of current pixel
         /// </summary>
         private Color _colorPixel;
+
+        /// <summary>
+        /// The upgrade menu
+        /// </summary>
+        public GameObject upgradeMenu;
        
         void Start()
         {
@@ -116,7 +121,6 @@ namespace Assets.Scripts.Level
                     // create prefab, x & y is offset by 0.5 to due to the point being in the center of the object
                     Instantiate(colorMapping.GamePrefab, new Vector3((float)(xPos + 0.5), (float)(yPos + 0.4), 0), Quaternion.identity, transform);
                     Debug.Log($"Created prefab at {_worldPos}");
-
                 } 
             }
         }

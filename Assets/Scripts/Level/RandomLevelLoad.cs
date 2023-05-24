@@ -3,32 +3,36 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.Tilemaps;
+using Assets.Scripts.Menus;
 
 namespace Assets.Scripts.Level
 {
     public class RandomLevelLoad : MonoBehaviour
     {
         /// <summary>
-        /// BoxCollider trigger this object refers to. 
-        /// </summary>
-        private BoxCollider2D bc;
-        /// <summary>
         /// Object for Finder
         /// </summary>
-        public GameObject FoundObj;
+        public GameObject TileMap;
 
+        /// <summary>
+        /// Upgrade menu
+        /// </summary>
+        public GameObject upgrade;
+
+        /// <summary>
+        /// Player stats
+        /// </summary>
+        public GameObject playerStatsObj; 
 
         // Start is called before the first frame update
         void Start()
         {
-            bc = gameObject.GetComponent<BoxCollider2D>();
-            Finder();
-        }
-
-        // Update is called once per frame
-        void Update()
-        {
-
+            // find the tilemap
+            TileMap = Finder("TileMap");
+            // find the upgrade menu
+            upgrade = Finder("UpgradeController");
+            // find the stat controller
+            playerStatsObj = Finder("StatController");
         }
 
         /// <summary>
@@ -40,12 +44,23 @@ namespace Assets.Scripts.Level
             // check if the player is the one inside the box
             if (collision.name == "Player(Clone)")
             {
+                // the player stats
+                var playerStats = playerStatsObj.GetComponent<PlayerStats>();
+                // update the completed level count
+                playerStats.completedLevels++;
+
+                // enable the upgrade menu, only if it is not already active, and the current level is divisible by 5
+                if (!upgrade.GetComponent<UpgradeController>().isDisabled && playerStats.completedLevels % 5 == 0)
+                {
+                    upgrade.GetComponent<UpgradeController>().EnableMenu();
+                    Time.timeScale = 0f;
+                }
 
                 // delete all tiles
-                FoundObj.GetComponent<Tilemap>().ClearAllTiles();
+                TileMap.GetComponent<Tilemap>().ClearAllTiles();
 
                 // delete all children of tilemap
-                foreach(Transform child in FoundObj.transform)
+                foreach(Transform child in TileMap.transform)
                 {
                     Destroy(child.gameObject);
                 }
@@ -56,7 +71,6 @@ namespace Assets.Scripts.Level
 
                 // load random level
                 LoadLevel(level);
-
             }
         }
 
@@ -67,20 +81,22 @@ namespace Assets.Scripts.Level
         public void LoadLevel(Texture2D Level)
         {
            
-            Debug.Log(FoundObj);
-            FoundObj.GetComponent<WorldGen>().GameMap = Level;
-            FoundObj.GetComponent<WorldGen>().CreateLevels();
+            Debug.Log(TileMap);
+            TileMap.GetComponent<WorldGen>().GameMap = Level;
+            TileMap.GetComponent<WorldGen>().CreateLevels();
         }
 
         /// <summary>
-        /// Looks for the tile map
+        /// Looks for gameobject using tag
         /// </summary>
-        public void Finder()
+        public GameObject Finder(string tag)
         {
-            if (GameObject.FindWithTag("TileMap"))
+            
+            if (GameObject.FindWithTag(tag))
             {
-                FoundObj = GameObject.FindWithTag("TileMap");
+                return GameObject.FindWithTag(tag);
             }
+            return null;
         }
     }
 

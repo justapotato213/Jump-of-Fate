@@ -9,7 +9,13 @@ namespace Assets.Scripts.Level
     /// </summary>
     [System.Serializable] public class ColorToSprite
     {
+        /// <summary>
+        /// RGB texture colour
+        /// </summary>
         public Color color;
+        /// <summary>
+        /// Unity sprite
+        /// </summary>
         public Sprite sprite;
     }
 }

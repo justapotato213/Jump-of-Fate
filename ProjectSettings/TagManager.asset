@@ -5,6 +5,9 @@ TagManager:
   serializedVersion: 2
   tags:
   - TileMap
+  - UpgradeMenu
+  - StatController
+  - UpgradeController
   layers:
   - Default
   - TransparentFX
