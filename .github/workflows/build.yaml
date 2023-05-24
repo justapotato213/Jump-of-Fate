@@ -52,8 +52,12 @@ jobs:
 
       # Make them executable on *nix platforms
       - name: Add executable flag
-        run: chmod -R +x build/
-        if: contains('["StandaloneWindows","StandaloneWindows64","StandaloneOSX","StandaloneLinux64"]', matrix.build_os)
+        run: |
+          if [[ "$MATRIX_OS" =~ ^(ubuntu|macos)-.*$ ]]; then
+            chmod -R +x build/
+          fi
+        env:
+          MATRIX_OS: ${{ matrix.os }}
 
       # Output
       - uses: actions/upload-artifact@v3
