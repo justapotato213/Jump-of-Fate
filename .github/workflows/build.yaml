@@ -9,16 +9,16 @@ jobs:
       matrix:
         include:
           - build_os: StandaloneWindows
-            # os: windows-latest
+            os: windows-latest
             name: Windows-x86
           - build_os: StandaloneWindows64
-            # os: windows-latest
+            os: windows-latest
             name: Windows-AMD64
           - build_os: StandaloneOSX
-            # os: macos-latest
+            os: macos-latest
             name: MacOS-Intel
           - build_os: StandaloneLinux64
-            # os: ubuntu-latest
+            os: ubuntu-latest
             name: Linux-AMD64
     
     # runs-on: ${{ matrix.os }}
