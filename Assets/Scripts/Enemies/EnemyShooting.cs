@@ -2,7 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-
+/// <summary>
+/// Create projectiles which fire at the enemy.
+/// </summary>
 public class EnemyShooting : MonoBehaviour
 {
     /// <summary>

@@ -7,6 +7,9 @@ using Assets.Scripts.Menus;
 
 namespace Assets.Scripts.Level
 {
+    /// <summary>
+    /// Loads a random level into the scene.
+    /// </summary>
     public class RandomLevelLoad : MonoBehaviour
     {
         /// <summary>

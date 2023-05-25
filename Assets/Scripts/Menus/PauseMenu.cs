@@ -1,8 +1,11 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
-// TODO: DOCUMENT
+
 namespace Assets.Scripts.Menu
 {
+    /// <summary>
+    /// Controls the pause menu, and its various buttons functions. 
+    /// </summary>
     public class PauseMenu : MonoBehaviour
     {
         /// <summary>
@@ -18,7 +21,7 @@ namespace Assets.Scripts.Menu
 
         // Start is called before the first frame update
         void Start()
-        { 
+        {
             Time.timeScale = 1f;
         }
 
@@ -26,7 +29,7 @@ namespace Assets.Scripts.Menu
         void Update()
         {
             if (Input.GetKeyDown(KeyCode.Escape))
-            { 
+            {
                 if (isPaused)
                 {
                     ResumeGame();
@@ -42,8 +45,7 @@ namespace Assets.Scripts.Menu
         /// Returns to Main Menu
         /// </summary>
         public void mainMenu()
-        {
-            
+        { 
             SceneManager.LoadScene("MainMenu");
         }
 
@@ -66,22 +68,13 @@ namespace Assets.Scripts.Menu
             Time.timeScale = 1f;
             isPaused = false;
         }
+
         /// <summary>
         /// Quits Application
         /// </summary>
         public void QuitGame()
         {
             Application.Quit();
-        }
-
-        /// <summary>
-        /// Settings Menu 
-        /// </summary>
-        public void settingsMenu()
-        {
-            // SceneManager.LoadScene("Settings");
-
-            // Will be finished at a later data
         }
     }
 }

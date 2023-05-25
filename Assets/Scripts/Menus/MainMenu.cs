@@ -6,6 +6,9 @@ using UnityEngine.SceneManagement;
 
 namespace Assets.Scripts.Menu
 {
+    /// <summary>
+    /// Controls the main menu, and its buttons
+    /// </summary>
     public class MainMenu : MonoBehaviour
     {
         /// <summary>

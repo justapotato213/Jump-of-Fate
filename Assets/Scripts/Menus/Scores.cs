@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
+/// <summary>
+/// Controls the score
+/// </summary>
 public class Scores : MonoBehaviour
 {
     /// <summary>
