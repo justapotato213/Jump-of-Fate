@@ -6,14 +6,9 @@ namespace Assets.Scripts.Menu
     public class PauseMenu : MonoBehaviour
     {
         /// <summary>
-        /// The gameobject this script belongs to
+        /// The pause menu object
         /// </summary>
         public GameObject pauseMenu;
-
-        /// <summary>
-        /// The upgrade menu game object
-        /// </summary>
-        public GameObject upgradeMenu;
 
         /// <summary>
         /// Whether the game is currently paused
@@ -23,9 +18,7 @@ namespace Assets.Scripts.Menu
 
         // Start is called before the first frame update
         void Start()
-        {
-            Debug.Log(upgradeMenu);
-            pauseMenu.SetActive(false);
+        { 
             Time.timeScale = 1f;
         }
 
@@ -33,7 +26,7 @@ namespace Assets.Scripts.Menu
         void Update()
         {
             if (Input.GetKeyDown(KeyCode.Escape))
-            {
+            { 
                 if (isPaused)
                 {
                     ResumeGame();
@@ -58,10 +51,10 @@ namespace Assets.Scripts.Menu
         /// Pauses the game
         /// </summary>
         public void PauseGame()
-        {
-            pauseMenu.SetActive(true);
+        { 
             Time.timeScale = 0f;
             isPaused = true;
+            pauseMenu.SetActive(true);
         }
 
         /// <summary>
