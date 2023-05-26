@@ -16,7 +16,6 @@ namespace Assets.Scripts.Menu
         /// </summary>
         public void PlayGame()
         {
-            Debug.Log("Play Button Pressed");
             SceneManager.LoadScene("SampleScene");
         }
 

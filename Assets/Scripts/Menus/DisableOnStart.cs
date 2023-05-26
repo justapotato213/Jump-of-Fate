@@ -12,10 +12,4 @@ public class DisableOnStart : MonoBehaviour
     {
         transform.gameObject.SetActive(false);
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }
