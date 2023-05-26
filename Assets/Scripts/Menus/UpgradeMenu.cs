@@ -38,7 +38,6 @@ namespace Assets.Scripts.Menus {
                 upgradeMenu.SetActive(false);
                 Time.timeScale = 1f;
             }
-
         }
 
         /// <summary>

@@ -107,7 +107,6 @@ namespace Assets.Scripts.Player
             // checking direction of character
             horizontal = Input.GetAxisRaw("Horizontal");
 
-            // hang time
             CalcHangTime();
             
             // check for flip, and flip the sprite
@@ -117,10 +116,8 @@ namespace Assets.Scripts.Player
             {
                 Respawn();
             }
-
-            // jumping 
+ 
             Jump();
-
         }
 
         private void FixedUpdate()
@@ -212,34 +209,22 @@ namespace Assets.Scripts.Player
         /// </summary>
         private void Jump()
         {
-            
             // allows them to jump if they are hanging, and don't already have a positive y velocity
             if (Input.GetButtonDown("Jump") && hangCounter > 0f && rb.velocity.y <= 0.3f)
             {
-                
                 rb.velocity = new Vector2(rb.velocity.x, jumpingPower);
             }
-
+            // mid air jumps
             else if (Input.GetButtonDown("Jump") && jumpsLeft > 0)
             {
                 jumpsLeft -= 1;
                 rb.velocity = new Vector2(rb.velocity.x, jumpingPower);
             }
-    
-            else if (Input.GetButtonDown("Jump"))
-            {
-                Debug.Log(hangTime);
-            }
-
-
             // checking if they let go during their jump, if so, make them lose y velocity
             if (Input.GetButtonUp("Jump") && rb.velocity.y > 0f)
             {
                 rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * 0.5f);
             }
-
-            
-
         }
 
         /// <summary>
@@ -251,5 +236,4 @@ namespace Assets.Scripts.Player
             rb.velocity = Vector2.zero;
         }
     }
-
 }

@@ -17,13 +17,6 @@ public class Scores : MonoBehaviour
     /// </summary>
     public float score;
 
-    // Start is called before the first frame update
-    void Awake()
-    {
-        // do not delete this 
-        DontDestroyOnLoad(transform.gameObject);
-    }
-
     // Update is called once per frame
     void Update()
     {

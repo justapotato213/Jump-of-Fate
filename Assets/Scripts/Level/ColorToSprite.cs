@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using UnityEngine;
 using UnityEngine.Tilemaps;
-// TODO: Document
+
 namespace Assets.Scripts.Level
 {
     /// <summary>

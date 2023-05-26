@@ -18,7 +18,6 @@ namespace Assets.Scripts.Menu
         /// </summary>
         public bool isPaused = false;
 
-
         // Start is called before the first frame update
         void Start()
         {
@@ -34,6 +33,7 @@ namespace Assets.Scripts.Menu
                 {
                     ResumeGame();
                 }
+                // timescale is modified by other things, check if it is not 0 the game is not being frozen by another thing.
                 else if (Time.timeScale == 1 && !isPaused)
                 {
                     PauseGame();
