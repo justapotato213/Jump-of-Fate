@@ -6,6 +6,9 @@ using UnityEngine.SceneManagement;
 
 namespace Assets.Scripts.Menu
 {
+    /// <summary>
+    /// Controls the main menu, and its buttons
+    /// </summary>
     public class MainMenu : MonoBehaviour
     {
         /// <summary>
@@ -13,7 +16,6 @@ namespace Assets.Scripts.Menu
         /// </summary>
         public void PlayGame()
         {
-            Debug.Log("Play Button Pressed");
             SceneManager.LoadScene("SampleScene");
         }
 

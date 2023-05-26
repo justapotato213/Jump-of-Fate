@@ -4,6 +4,9 @@ using UnityEngine;
 using Assets.Scripts.Player;
 using UnityEngine.SceneManagement;
 
+/// <summary>
+/// Allows for runtime modification of the player stats, as the player object gets destroyed between levels. 
+/// </summary>
 public class PlayerStats : MonoBehaviour
 {
     // janky workaround to get upgrades to work
@@ -18,7 +21,7 @@ public class PlayerStats : MonoBehaviour
     public int jumpingPower = 26;
 
     /// <summary>
-    /// How many jumps the player can make
+    /// How many jumps the player can make, after the original one 
     /// </summary>
     public int numberofJumps = 0;
 
@@ -42,6 +45,7 @@ public class PlayerStats : MonoBehaviour
         set
         {
             _completedLevels = value;
+            // if we have beaten the game
             if (_completedLevels == 20)
             {
                 // show the finished game screen
@@ -50,7 +54,6 @@ public class PlayerStats : MonoBehaviour
                 Time.timeScale = 0f;
                 // wait time
                 StartCoroutine(Wait());
-               
             }
         }
     }
@@ -74,7 +77,6 @@ public class PlayerStats : MonoBehaviour
     /// <summary>
     /// Waits 5 seconds
     /// </summary>
-
     private IEnumerator Wait()
     {
         yield return new WaitForSecondsRealtime(5);
