@@ -19,28 +19,13 @@ namespace Assets.Scripts.Player
         void Update()
         {
             // find the object
-            Finder();
-            // found it
+            foundObj = GameObject.FindWithTag("Respawn");
             if (foundObj != null)
             {
                 // set the proper variable
                 GetComponent<PlayerController>().respawnPoint = foundObj;
-                // delete self from gameObject
-                // Destroy(this);
             }
 
-        }
-        /// <summary>
-        /// Looks for objects with the respawn tag
-        /// </summary>
-        public void Finder()
-        {
-            // look for respawn tag
-            if (GameObject.FindWithTag("Respawn"))
-            {
-                // exists, set as variable
-                foundObj = GameObject.FindWithTag("Respawn");
-            }
         }
     }
 }

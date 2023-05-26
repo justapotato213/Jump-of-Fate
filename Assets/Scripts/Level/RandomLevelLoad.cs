@@ -7,6 +7,9 @@ using Assets.Scripts.Menus;
 
 namespace Assets.Scripts.Level
 {
+    /// <summary>
+    /// Loads a random level into the scene.
+    /// </summary>
     public class RandomLevelLoad : MonoBehaviour
     {
         /// <summary>
@@ -49,7 +52,6 @@ namespace Assets.Scripts.Level
                 // update the completed level count
                 playerStats.CompletedLevels++;
 
-
                 // enable the upgrade menu, only if it is not already active, and the current level is divisible by 5, and its not the end of the game
                 if (!upgrade.GetComponent<UpgradeController>().isDisabled && playerStats.CompletedLevels % 5 == 0 && playerStats.CompletedLevels != 20)
                 {
@@ -81,8 +83,6 @@ namespace Assets.Scripts.Level
         /// <param name="Level">Level to load, as a png.</param>
         public void LoadLevel(Texture2D Level)
         {
-           
-            Debug.Log(TileMap);
             TileMap.GetComponent<WorldGen>().GameMap = Level;
             TileMap.GetComponent<WorldGen>().CreateLevels();
         }
@@ -92,12 +92,7 @@ namespace Assets.Scripts.Level
         /// </summary>
         public GameObject Finder(string tag)
         {
-            
-            if (GameObject.FindWithTag(tag))
-            {
-                return GameObject.FindWithTag(tag);
-            }
-            return null;
+           return GameObject.FindGameObjectWithTag(tag);
         }
     }
 

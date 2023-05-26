@@ -6,6 +6,9 @@ using Assets.Scripts.Player;
 
 
 namespace Assets.Scripts.Menus {
+    /// <summary>
+    /// Controls the various stats of the player
+    /// </summary>
     public class UpgradeMenu : MonoBehaviour
     {
         /// <summary>
@@ -35,7 +38,6 @@ namespace Assets.Scripts.Menus {
                 upgradeMenu.SetActive(false);
                 Time.timeScale = 1f;
             }
-
         }
 
         /// <summary>

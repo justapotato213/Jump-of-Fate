@@ -6,7 +6,7 @@
 namespace Assets.Scripts.Camera
 {
     /// <summary>
-    /// Assigns proper objects and prefabs to the camera, and deletes itself once done
+    /// Assigns proper objects and prefabs to the camera on startup.
     /// </summary>
     public class CameraStartUp : MonoBehaviour
     {
@@ -20,15 +20,12 @@ namespace Assets.Scripts.Camera
         {
             // find the object
             Finder();
-            // found it
-            if (foundObj != null ) 
+
+            if (foundObj != null)
             {
                 // set the proper variable
                 GetComponent<FollowPlayer>().target = foundObj.transform;
-                // delete self from gameObject
-                // Destroy(this);
             }
-
         }
 
         /// <summary>
@@ -36,7 +33,7 @@ namespace Assets.Scripts.Camera
         /// </summary>
         public void Finder()
         {
-            // look for respawn tag
+            // look for player tag
             if (GameObject.FindWithTag("Player"))
             {
                 // exists, set as variable
