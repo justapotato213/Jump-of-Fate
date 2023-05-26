@@ -1,5 +1,8 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using System.IO;
+using Assets.Scripts.Player;
+
 
 namespace Assets.Scripts.Menu
 {
@@ -12,6 +15,11 @@ namespace Assets.Scripts.Menu
         /// The pause menu object
         /// </summary>
         public GameObject pauseMenu;
+
+        /// <summary>
+        /// Gameobject which holds the playerStats script.
+        /// </summary>
+        public GameObject PlayerStats;
 
         /// <summary>
         /// Whether the game is currently paused
@@ -45,7 +53,20 @@ namespace Assets.Scripts.Menu
         /// Returns to Main Menu
         /// </summary>
         public void mainMenu()
-        { 
+        {
+            PlayerStats = GameObject.FindGameObjectWithTag("StatController");
+
+            // save all our data
+            // setup our paths and variables
+            string json = JsonUtility.ToJson(PlayerStats.GetComponent<PlayerStats>());
+            string destination = Application.persistentDataPath + "/save.dat";
+
+            // check if we already have a save
+            if (!File.Exists(destination)) File.Create(destination).Dispose();
+   
+            // write the save data
+            File.WriteAllText(destination, json);
+
             SceneManager.LoadScene("MainMenu");
         }
 
