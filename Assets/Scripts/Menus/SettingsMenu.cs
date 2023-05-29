@@ -16,6 +16,9 @@ public class SettingsMenu : MonoBehaviour
     public TMPro.TMP_Dropdown resolutionDropdown;
 
 
+    /// <summary>
+    /// Initializes the resolution dropdown menu
+    /// </summary>
     public void Start()
     {
         resolutions = Screen.resolutions;
@@ -26,22 +29,18 @@ public class SettingsMenu : MonoBehaviour
 
         List<string> options = new List<string>();
 
+        // Adds the resolution options 
         for (int i=0; i < resolutions.Length; i++)
         {
             string option = resolutions[i].width + " x " + resolutions[i].height;
             options.Add(option);
 
-            Debug.Log(option);
-
-            //if (resolutions[i].width == 2048 &&
-            //    resolutions[i].height == 1280)
-            //{
-            //    currentResolutionIndex = 1;
-            //}
+            // Debug.Log(option);
 
             if (resolutions[i].width == Screen.currentResolution.width &&
                 resolutions[i].height == Screen.currentResolution.height)
             {
+                // Default resolution set at 2048 x 1280
                 currentResolutionIndex = 8;
             }
         }
@@ -49,10 +48,12 @@ public class SettingsMenu : MonoBehaviour
         resolutionDropdown.AddOptions(options);
         resolutionDropdown.value = currentResolutionIndex;
         resolutionDropdown.RefreshShownValue();
-
-        // SetResolution(-1);
     }
 
+    /// <summary>
+    /// Changes the resolution of the screen
+    /// </summary>
+    /// <param name="resolutionIndex"></param>
     public void SetResolution (int resolutionIndex)
     {
         Resolution resolution = resolutions[resolutionIndex];
