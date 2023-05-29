@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
+/// <summary>
+/// Controls the score
+/// </summary>
 public class Scores : MonoBehaviour
 {
     /// <summary>
@@ -13,13 +16,6 @@ public class Scores : MonoBehaviour
     /// Score system using time
     /// </summary>
     public float score;
-
-    // Start is called before the first frame update
-    void Awake()
-    {
-        // do not delete this 
-        DontDestroyOnLoad(transform.gameObject);
-    }
 
     // Update is called once per frame
     void Update()

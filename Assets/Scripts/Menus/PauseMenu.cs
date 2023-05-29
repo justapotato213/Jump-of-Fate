@@ -1,31 +1,26 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
-// TODO: DOCUMENT
+
 namespace Assets.Scripts.Menu
 {
+    /// <summary>
+    /// Controls the pause menu, and its various buttons functions. 
+    /// </summary>
     public class PauseMenu : MonoBehaviour
     {
         /// <summary>
-        /// The gameobject this script belongs to
+        /// The pause menu object
         /// </summary>
         public GameObject pauseMenu;
-
-        /// <summary>
-        /// The upgrade menu game object
-        /// </summary>
-        public GameObject upgradeMenu;
 
         /// <summary>
         /// Whether the game is currently paused
         /// </summary>
         public bool isPaused = false;
 
-
         // Start is called before the first frame update
         void Start()
         {
-            Debug.Log(upgradeMenu);
-            pauseMenu.SetActive(false);
             Time.timeScale = 1f;
         }
 
@@ -38,6 +33,7 @@ namespace Assets.Scripts.Menu
                 {
                     ResumeGame();
                 }
+                // timescale is modified by other things, check if it is not 0 the game is not being frozen by another thing.
                 else if (Time.timeScale == 1 && !isPaused)
                 {
                     PauseGame();
@@ -49,8 +45,7 @@ namespace Assets.Scripts.Menu
         /// Returns to Main Menu
         /// </summary>
         public void mainMenu()
-        {
-            
+        { 
             SceneManager.LoadScene("MainMenu");
         }
 
@@ -58,10 +53,10 @@ namespace Assets.Scripts.Menu
         /// Pauses the game
         /// </summary>
         public void PauseGame()
-        {
-            pauseMenu.SetActive(true);
+        { 
             Time.timeScale = 0f;
             isPaused = true;
+            pauseMenu.SetActive(true);
         }
 
         /// <summary>
@@ -73,22 +68,13 @@ namespace Assets.Scripts.Menu
             Time.timeScale = 1f;
             isPaused = false;
         }
+
         /// <summary>
         /// Quits Application
         /// </summary>
         public void QuitGame()
         {
             Application.Quit();
-        }
-
-        /// <summary>
-        /// Settings Menu 
-        /// </summary>
-        public void settingsMenu()
-        {
-            // SceneManager.LoadScene("Settings");
-
-            // Will be finished at a later data
         }
     }
 }

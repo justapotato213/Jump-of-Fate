@@ -6,20 +6,11 @@ using Assets.Scripts.Player;
 
 namespace Assets.Scripts.Level
 {
-    public class playerRespawner : MonoBehaviour
+    /// <summary>
+    /// Respawns the player if it enters this trigger
+    /// </summary>
+    public class PlayerRespawner : MonoBehaviour
     {
-        // Start is called before the first frame update
-        void Start()
-        {
-
-        }
-
-        // Update is called once per frame
-        void Update()
-        {
-
-        }
-
         /// <summary>
         /// Respawns the player
         /// </summary>

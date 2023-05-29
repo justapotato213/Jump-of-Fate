@@ -18,11 +18,6 @@ namespace Assets.Scripts.Menus
         /// </summary>
         public bool isDisabled = false;
 
-        private void Start()
-        {
-           
-        }
-
         /// <summary>
         /// Disables the upgrade menu
         /// </summary>

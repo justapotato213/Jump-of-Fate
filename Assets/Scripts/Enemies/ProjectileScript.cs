@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using Assets.Scripts.Player;
 
+/// <summary>
+/// Controls the projectile itself.
+/// </summary>
 public class ProjectileScript : MonoBehaviour
 {
     /// <summary>
@@ -22,6 +25,9 @@ public class ProjectileScript : MonoBehaviour
     /// </summary>
     public LayerMask layer;
 
+    /// <summary>
+    /// Stores time value
+    /// </summary>
     private float timer;
 
     // Start is called before the first frame update
@@ -29,11 +35,9 @@ public class ProjectileScript : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         player = GameObject.FindGameObjectsWithTag("Player")[0];
-
+        // apply a force towards the player on startup
         Vector3 direction = player.transform.position - transform.position;
         rb.velocity = new Vector2(direction.x, direction.y).normalized * force;
-
-
     }
 
     // Update is called once per frame
@@ -41,11 +45,13 @@ public class ProjectileScript : MonoBehaviour
     {
         timer += Time.deltaTime;
 
+        // destroy itself if it times out
         if (timer > 10)
         {
             Destroy(gameObject);
         }
-
+        
+        // hit the ground, destroy itself
         if (Physics2D.OverlapCircle(rb.position, 0.25f, layer))
         {
             Destroy(gameObject);
@@ -55,7 +61,7 @@ public class ProjectileScript : MonoBehaviour
     /// <summary>
     /// Detects collisions between player and projectile
     /// </summary>
-    /// <param name="collision"></param>
+    /// <param name="collision">Collider that entered this trigger</param>
     private void OnTriggerEnter2D(Collider2D collision)
     {
         // respawn player

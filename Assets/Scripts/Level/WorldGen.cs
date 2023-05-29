@@ -20,22 +20,6 @@ namespace Assets.Scripts.Level
         /// Maps a colour to a specific prefab
         /// </summary>
         public ColorToObject[] ColorPrefabMapping;
-        /// <summary>
-        /// Position of tile in the world
-        /// </summary>
-        private Vector3Int _worldPos;
-        /// <summary>
-        /// Tilemap being modified
-        /// </summary>
-        private Tilemap _tilemap;
-        /// <summary>
-        /// Current tile
-        /// </summary>
-        private Tile _tile;
-        /// <summary>
-        /// Colour of current pixel
-        /// </summary>
-        private Color _colorPixel;
 
         /// <summary>
         /// The upgrade menu
@@ -59,8 +43,6 @@ namespace Assets.Scripts.Level
         /// </summary>
         public void CreateLevels()
         {
-
-            Debug.Log("Creating Level");
             // loop through all 
             for (int i = 0; i < GameMap.width; i++)
             {
@@ -79,10 +61,10 @@ namespace Assets.Scripts.Level
         private void GenerateObject(int xPos, int yPos)
         {
             // get current colour
-            _colorPixel = GameMap.GetPixel(xPos, yPos);
+            var _colorPixel = GameMap.GetPixel(xPos, yPos);
             
             if (_colorPixel == new Color(1f, 1f, 1f, 1f)) return;
-            Debug.Log(_colorPixel);
+
             // loop through each color map there is for tiles
             foreach (ColorToSprite colorMapping in ColorTileMapping)
             {
@@ -90,11 +72,11 @@ namespace Assets.Scripts.Level
                 if (colorMapping.color.Equals(_colorPixel))
                 {
                     // set world position to be what we are now
-                    _worldPos = new Vector3Int(xPos, yPos, 0);
+                    var _worldPos = new Vector3Int(xPos, yPos, 0);
                     // get tilemap
-                    _tilemap = GetComponent<Tilemap>();
+                    var _tilemap = GetComponent<Tilemap>();
                     // create tile
-                    _tile = ScriptableObject.CreateInstance<Tile>();
+                    var _tile = ScriptableObject.CreateInstance<Tile>();
                     // change sprite to correct one
                     _tile.sprite = colorMapping.sprite;
                     
@@ -103,7 +85,6 @@ namespace Assets.Scripts.Level
                     {
                         // set it to be the new tile
                         _tilemap.SetTile(_worldPos, _tile);
-                        Debug.Log($"Created ground at: {_worldPos}");
                     }
                 }
             }
@@ -117,7 +98,7 @@ namespace Assets.Scripts.Level
                 if (colorMapping.ObjectColor.Equals(_colorPixel))
                 {
                     // set position to be where we are now
-                    _worldPos = new Vector3Int(xPos, yPos, 0);
+                    var _worldPos = new Vector3Int(xPos, yPos, 0);
                     // create prefab, x & y is offset by 0.5 to due to the point being in the center of the object
                     Instantiate(colorMapping.GamePrefab, new Vector3((float)(xPos + 0.5), (float)(yPos + 0.4), 0), Quaternion.identity, transform);
                     Debug.Log($"Created prefab at {_worldPos}");
