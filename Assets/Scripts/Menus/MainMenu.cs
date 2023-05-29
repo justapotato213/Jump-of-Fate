@@ -25,6 +25,9 @@ namespace Assets.Scripts.Menu
             SceneManager.LoadScene("SampleScene");
         }
 
+        /// <summary>
+        /// Opens the settings menu
+        /// </summary>
         public void Settings()
         {
             Debug.Log("Settings Button Pressed");
@@ -32,15 +35,21 @@ namespace Assets.Scripts.Menu
             mainMenu.SetActive(false);
         }
 
+        /// <summary>
+        /// Opens the main menu
+        /// </summary>
         public void frontMenu()
         {
             mainMenu.SetActive(true);
             settingsMenu.SetActive(false);
         }
 
+        /// <summary>
+        /// Opens the tutorial menu
+        /// </summary>
         public void Tutorial()
         {
-
+            // Will be done in the future
         }
         /// <summary>
         /// Closes the application
