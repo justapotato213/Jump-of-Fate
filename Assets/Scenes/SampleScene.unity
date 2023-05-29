@@ -1560,7 +1560,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pauseMenu: {fileID: 465347657}
-  PlayerStats: {fileID: 0}
+  PlayerStats: {fileID: 2087474501}
+  score: 0
+  scoreObject: {fileID: 1275682839}
   isPaused: 0
 --- !u!1 &758572464
 GameObject:
@@ -1859,7 +1861,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pauseMenu: {fileID: 465347657}
-  PlayerStats: {fileID: 0}
+  PlayerStats: {fileID: 2087474501}
+  score: 0
+  scoreObject: {fileID: 1275682839}
   isPaused: 0
 --- !u!1 &1015140833
 GameObject:
@@ -1981,6 +1985,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pauseMenu: {fileID: 465347657}
   PlayerStats: {fileID: 2087474501}
+  score: 0
+  scoreObject: {fileID: 1275682839}
   isPaused: 0
 --- !u!114 &1015140839
 MonoBehaviour:
@@ -2950,7 +2956,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pauseMenu: {fileID: 465347657}
-  PlayerStats: {fileID: 0}
+  PlayerStats: {fileID: 2087474501}
+  score: 0
+  scoreObject: {fileID: 1275682839}
   isPaused: 0
 --- !u!1 &2087474501
 GameObject:
@@ -2984,7 +2992,9 @@ MonoBehaviour:
   playerSpeed: 13
   jumpingPower: 26
   numberofJumps: 0
-  finishedText: {fileID: 1091052665}
+  score: 0
+  scoreObject: {fileID: 1275682839}
+  finishedTextController: {fileID: 0}
   _completedLevels: 0
 --- !u!4 &2087474503
 Transform:

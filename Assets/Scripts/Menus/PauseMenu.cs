@@ -22,6 +22,16 @@ namespace Assets.Scripts.Menu
         public GameObject PlayerStats;
 
         /// <summary>
+        /// Current score
+        /// </summary>
+        public float score;
+
+        /// <summary>
+        /// Gameobject that stores the score
+        /// </summary>
+        public GameObject scoreObject;
+
+        /// <summary>
         /// Whether the game is currently paused
         /// </summary>
         public bool isPaused = false;
@@ -54,6 +64,11 @@ namespace Assets.Scripts.Menu
         /// </summary>
         public void mainMenu()
         {
+            
+            score = scoreObject.GetComponent<Scores>().score;
+            PlayerPrefs.SetFloat("score", score);
+
+
             PlayerStats = GameObject.FindGameObjectWithTag("StatController");
 
             // save all our data
