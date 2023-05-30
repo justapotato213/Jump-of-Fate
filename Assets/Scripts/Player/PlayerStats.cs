@@ -77,13 +77,11 @@ public class PlayerStats : MonoBehaviour
             _completedLevels = value;
             // if we have beaten the game
             if (_completedLevels == 20)
-            {
-
+            { 
                 // delete save file
                 string path = Application.persistentDataPath + "/save.dat";
                 if (File.Exists(path))
                 {
-                    Debug.Log(path);
                     File.Delete(path);
                 }
 

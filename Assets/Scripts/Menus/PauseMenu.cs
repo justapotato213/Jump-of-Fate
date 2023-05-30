@@ -1,8 +1,6 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.IO;
-using Assets.Scripts.Player;
-
 
 namespace Assets.Scripts.Menu
 {
