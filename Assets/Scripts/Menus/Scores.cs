@@ -13,9 +13,14 @@ public class Scores : MonoBehaviour
     /// </summary>
     public TextMeshProUGUI scoreText;
     /// <summary>
-    /// Score system using time
+    /// Current score
     /// </summary>
     public float score;
+
+    /// <summary>
+    /// Current high score
+    /// </summary>
+    public float highscore; 
 
     private void Start()
     {
@@ -25,13 +30,22 @@ public class Scores : MonoBehaviour
             // load said score
             score = PlayerPrefs.GetFloat("score");
         }
+        
+        if (PlayerPrefs.HasKey("highscore"))
+        {
+            highscore = PlayerPrefs.GetFloat("highscore");
+        }
+        else
+        {
+            highscore = 0f;
+        }
     }
 
     // Update is called once per frame
     private void Update()
     {
         score -= Time.deltaTime;
-        scoreText.text = "Score: " + Mathf.Round(score).ToString();
+        scoreText.text = "Score: " + Mathf.Round(score).ToString() + "\n" + "Highscore: " + Mathf.Round(highscore).ToString();
     }
 }
     

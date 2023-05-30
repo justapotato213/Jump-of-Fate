@@ -1,10 +1,8 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using Assets.Scripts.Player;
 using UnityEngine.SceneManagement;
 using System.IO;
-using Assets.Scripts.Menu;
 
 /// <summary>
 /// Allows for runtime modification of the player stats, as the player object gets destroyed between levels. 
@@ -31,6 +29,16 @@ public class PlayerStats : MonoBehaviour
     /// The game finished text.
     /// </summary>
     public FinishText finishedTextController;
+
+    /// <summary>
+    /// Current score
+    /// </summary>
+    public float score;
+
+    /// <summary>
+    /// Gameobject that stores the score
+    /// </summary>
+    public GameObject scoreObject;
 
     /// <summary>
     /// Load player data on start
@@ -78,6 +86,27 @@ public class PlayerStats : MonoBehaviour
                     Debug.Log(path);
                     File.Delete(path);
                 }
+
+                score = scoreObject.GetComponent<Scores>().score;
+
+                // check if we have a high score saved
+                if (PlayerPrefs.HasKey("highscore"))
+                {
+                    // check if its lower than our current score
+                    if (PlayerPrefs.GetFloat("highscore") < score)
+                    {
+                        // save it
+                        PlayerPrefs.SetFloat("highscore", score);
+                    }
+                }
+                else
+                {
+                    // no highscore, set our current score to be it
+                    PlayerPrefs.SetFloat("highscore", score);
+                }
+
+                // delete score
+                PlayerPrefs.DeleteKey("score");
                 
                 // show the finished game screen
                 finishedTextController.EnableText();

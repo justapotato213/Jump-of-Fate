@@ -2253,6 +2253,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scoreText: {fileID: 1275682841}
   score: 10000
+  highscore: 0
 --- !u!1 &1543176060
 GameObject:
   m_ObjectHideFlags: 0
@@ -2992,9 +2993,9 @@ MonoBehaviour:
   playerSpeed: 13
   jumpingPower: 26
   numberofJumps: 0
+  finishedTextController: {fileID: 1015140839}
   score: 0
   scoreObject: {fileID: 1275682839}
-  finishedTextController: {fileID: 0}
   _completedLevels: 0
 --- !u!4 &2087474503
 Transform:
