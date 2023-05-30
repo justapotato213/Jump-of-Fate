@@ -1560,6 +1560,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pauseMenu: {fileID: 465347657}
+  PlayerStats: {fileID: 2087474501}
+  score: 0
+  scoreObject: {fileID: 1275682839}
   isPaused: 0
 --- !u!1 &758572464
 GameObject:
@@ -1858,6 +1861,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pauseMenu: {fileID: 465347657}
+  PlayerStats: {fileID: 2087474501}
+  score: 0
+  scoreObject: {fileID: 1275682839}
   isPaused: 0
 --- !u!1 &1015140833
 GameObject:
@@ -1872,9 +1878,10 @@ GameObject:
   - component: {fileID: 1015140835}
   - component: {fileID: 1015140834}
   - component: {fileID: 1015140838}
+  - component: {fileID: 1015140839}
   m_Layer: 5
   m_Name: Canvas
-  m_TagString: Untagged
+  m_TagString: Canvas
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1977,7 +1984,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pauseMenu: {fileID: 465347657}
+  PlayerStats: {fileID: 2087474501}
+  score: 0
+  scoreObject: {fileID: 1275682839}
   isPaused: 0
+--- !u!114 &1015140839
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1015140833}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8262ef28ef3ec9f4695f19915a2bccab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  finishText: {fileID: 1091052665}
 --- !u!1 &1091052665
 GameObject:
   m_ObjectHideFlags: 0
@@ -2230,6 +2253,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scoreText: {fileID: 1275682841}
   score: 10000
+  highscore: 0
 --- !u!1 &1543176060
 GameObject:
   m_ObjectHideFlags: 0
@@ -2544,7 +2568,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1755725036
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2933,6 +2957,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pauseMenu: {fileID: 465347657}
+  PlayerStats: {fileID: 2087474501}
+  score: 0
+  scoreObject: {fileID: 1275682839}
   isPaused: 0
 --- !u!1 &2087474501
 GameObject:
@@ -2966,7 +2993,9 @@ MonoBehaviour:
   playerSpeed: 13
   jumpingPower: 26
   numberofJumps: 0
-  finishedText: {fileID: 1091052665}
+  finishedTextController: {fileID: 1015140839}
+  score: 0
+  scoreObject: {fileID: 1275682839}
   _completedLevels: 0
 --- !u!4 &2087474503
 Transform:
