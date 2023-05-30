@@ -15,7 +15,6 @@ public class SettingsMenu : MonoBehaviour
     /// </summary>
     public TMPro.TMP_Dropdown resolutionDropdown;
 
-
     /// <summary>
     /// Initializes the resolution dropdown menu
     /// </summary>
@@ -40,8 +39,8 @@ public class SettingsMenu : MonoBehaviour
             if (resolutions[i].width == Screen.currentResolution.width &&
                 resolutions[i].height == Screen.currentResolution.height)
             {
-                // Default resolution set at 2048 x 1280
-                currentResolutionIndex = 8;
+                // Default resolution set at the current resolution
+                currentResolutionIndex = i;
             }
         }
 
@@ -53,7 +52,7 @@ public class SettingsMenu : MonoBehaviour
     /// <summary>
     /// Changes the resolution of the screen
     /// </summary>
-    /// <param name="resolutionIndex"></param>
+    /// <param name="resolutionIndex">The index of the resolution in the dropdown menu</param>
     public void SetResolution (int resolutionIndex)
     {
         Resolution resolution = resolutions[resolutionIndex];
@@ -63,7 +62,7 @@ public class SettingsMenu : MonoBehaviour
     /// <summary>
     /// Sets the screen to fullscreen or disables fullscreen
     /// </summary>
-    /// <param name="isFullScreen"></param>
+    /// <param name="isFullScreen">A boolean of whether the fullscreen is on or off</param>
     public void setFullScreen(bool isFullScreen)
     {
         Screen.fullScreen = isFullScreen;

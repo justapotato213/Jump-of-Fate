@@ -11,10 +11,19 @@ namespace Assets.Scripts.Menu
     /// </summary>
     public class MainMenu : MonoBehaviour
     {
+        /// <summary>
+        /// Main menu object
+        /// </summary>
         public GameObject mainMenu;
 
+        /// <summary>
+        /// Settings menu object
+        /// </summary>
         public GameObject settingsMenu;
 
+        /// <summary>
+        /// Tutorials menu object
+        /// </summary>
         public GameObject tutorialMenu;
 
         /// <summary>
