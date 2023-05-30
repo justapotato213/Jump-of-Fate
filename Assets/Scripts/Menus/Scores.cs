@@ -43,6 +43,12 @@ public class Scores : MonoBehaviour
     private void Update()
     {
         score -= Time.deltaTime;
+        
+        // Checks if score is below 0
+        if (score < 0)
+        {
+            score = 0;
+        }
         scoreText.text = "Score: " + Mathf.Round(score).ToString() + "\n" + "Highscore: " + Mathf.Round(highscore).ToString();
     }
 }
