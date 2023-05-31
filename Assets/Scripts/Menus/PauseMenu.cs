@@ -29,28 +29,17 @@ namespace Assets.Scripts.Menu
         /// </summary>
         public GameObject scoreObject;
 
-        /// <summary>
-        /// Whether the game is currently paused
-        /// </summary>
-        public bool isPaused = false;
-
-        // Start is called before the first frame update
-        void Start()
-        {
-            Time.timeScale = 1f;
-        }
-
         // Update is called once per frame
         void Update()
         {
             if (Input.GetKeyDown(KeyCode.Escape))
             {
-                if (isPaused)
+                if (Time.timeScale == 0f && pauseMenu.activeSelf)
                 {
                     ResumeGame();
                 }
                 // timescale is modified by other things, check if it is not 0 the game is not being frozen by another thing.
-                else if (Time.timeScale == 1 && !isPaused)
+                else if (Time.timeScale == 1 && !pauseMenu.activeSelf)
                 {
                     PauseGame();
                 }
@@ -80,6 +69,9 @@ namespace Assets.Scripts.Menu
             // write the save data
             File.WriteAllText(destination, json);
 
+            // reset the time
+            Time.timeScale = 1f;
+
             SceneManager.LoadScene("MainMenu");
         }
 
@@ -89,7 +81,6 @@ namespace Assets.Scripts.Menu
         public void PauseGame()
         { 
             Time.timeScale = 0f;
-            isPaused = true;
             pauseMenu.SetActive(true);
         }
 
@@ -98,9 +89,8 @@ namespace Assets.Scripts.Menu
         /// </summary>
         public void ResumeGame()
         {
-            pauseMenu.SetActive(false);
             Time.timeScale = 1f;
-            isPaused = false;
+            pauseMenu.SetActive(false);
         }
 
         /// <summary>
