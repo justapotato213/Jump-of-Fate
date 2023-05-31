@@ -65,6 +65,6 @@ public class SettingsMenu : MonoBehaviour
     /// <param name="isFullScreen">A boolean of whether the fullscreen is on or off</param>
     public void setFullScreen(bool isFullScreen)
     {
-        Screen.fullScreen = isFullScreen;
+        Screen.fullScreen = !Screen.fullScreen;
     }
 }
