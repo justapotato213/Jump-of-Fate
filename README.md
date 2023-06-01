@@ -22,6 +22,8 @@ A unity platforming game, featuring ugprades and differing levels. Made by Ediso
 1. Follow steps 1-4 in [playing](https://github.com/justapotato213/Jump-of-Fate/edit/main/README.md#playing). 
 2. Open [LevelGenerator/imageGenerator.py](LevelGenerator/imageGenerator.py).
 3. Edit the code (imageGenerator.py) using an IDE of your choice. 
+4. Add slices in the form of .jpg images inside (Input_Images) folder.
+5. Once you run (imageGenerator.py), generated levels will be saved in the (Levels) folder.
 ## Notes
 ### Game
 - The level generation is handled by the WorldGen.cs file. 
@@ -35,4 +37,7 @@ A unity platforming game, featuring ugprades and differing levels. Made by Ediso
   - This is simply stored as a JSON format.
 - There are two scenes, MainMenu and SampleScene, where the MainMenu is the beginning menu, and SampleScene is the main game itself. 
 ### Level Generator
+- imageGenerator.py is the Python file used to generate the levels
+  - Note: In order to run this file, you will need to have the PILLOW library installed in Python. Installation instructions can be found here: https://pillow.readthedocs.io/en/stable/installation.html
+  - It works by randomly combining the slices (images) horizontally and adds the start and the end to each level.
 
