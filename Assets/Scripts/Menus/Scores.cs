@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
@@ -13,15 +11,45 @@ public class Scores : MonoBehaviour
     /// </summary>
     public TextMeshProUGUI scoreText;
     /// <summary>
-    /// Score system using time
+    /// Current score
     /// </summary>
     public float score;
 
+    /// <summary>
+    /// Current high score
+    /// </summary>
+    public float highscore; 
+
+    private void Start()
+    {
+        // check if we have a score saved
+        if (PlayerPrefs.HasKey("score"))
+        {
+            // load said score
+            score = PlayerPrefs.GetFloat("score");
+        }
+        
+        if (PlayerPrefs.HasKey("highscore"))
+        {
+            highscore = PlayerPrefs.GetFloat("highscore");
+        }
+        else
+        {
+            highscore = 0f;
+        }
+    }
+
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
         score -= Time.deltaTime;
-        scoreText.text = "Score: " + Mathf.Round(score).ToString();
+        
+        // Checks if score is below 0
+        if (score < 0)
+        {
+            score = 0;
+        }
+        scoreText.text = "Score: " + Mathf.Round(score).ToString() + "\n" + "Highscore: " + Mathf.Round(highscore).ToString();
     }
 }
     

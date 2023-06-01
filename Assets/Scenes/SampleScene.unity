@@ -827,8 +827,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Congratulations on beating the game! We hope you enjoyed the game. Write
-    down your score in the top left. Returning to main menu soon. '
+  m_text: 'Congratulations on beating the game! We hope you enjoyed the game. Returning
+    to main menu soon. '
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1157,7 +1157,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
-  m_BackGroundColor: {r: 0, g: 0.24879345, b: 0.509434, a: 0}
+  m_BackGroundColor: {r: 0.15686275, g: 0.15686275, b: 0.15686275, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -1560,7 +1560,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pauseMenu: {fileID: 465347657}
-  isPaused: 0
+  PlayerStats: {fileID: 2087474501}
+  score: 0
+  scoreObject: {fileID: 1275682839}
 --- !u!1 &758572464
 GameObject:
   m_ObjectHideFlags: 0
@@ -1858,7 +1860,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pauseMenu: {fileID: 465347657}
-  isPaused: 0
+  PlayerStats: {fileID: 2087474501}
+  score: 0
+  scoreObject: {fileID: 1275682839}
 --- !u!1 &1015140833
 GameObject:
   m_ObjectHideFlags: 0
@@ -1872,9 +1876,10 @@ GameObject:
   - component: {fileID: 1015140835}
   - component: {fileID: 1015140834}
   - component: {fileID: 1015140838}
+  - component: {fileID: 1015140839}
   m_Layer: 5
   m_Name: Canvas
-  m_TagString: Untagged
+  m_TagString: Canvas
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1911,7 +1916,7 @@ MonoBehaviour:
   m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 1920, y: 1080}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
@@ -1977,7 +1982,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pauseMenu: {fileID: 465347657}
-  isPaused: 0
+  PlayerStats: {fileID: 2087474501}
+  score: 0
+  scoreObject: {fileID: 1275682839}
+--- !u!114 &1015140839
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1015140833}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8262ef28ef3ec9f4695f19915a2bccab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  finishText: {fileID: 1091052665}
 --- !u!1 &1091052665
 GameObject:
   m_ObjectHideFlags: 0
@@ -2230,6 +2250,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scoreText: {fileID: 1275682841}
   score: 10000
+  highscore: 0
 --- !u!1 &1543176060
 GameObject:
   m_ObjectHideFlags: 0
@@ -2544,7 +2565,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1755725036
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2933,7 +2954,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pauseMenu: {fileID: 465347657}
-  isPaused: 0
+  PlayerStats: {fileID: 2087474501}
+  score: 0
+  scoreObject: {fileID: 1275682839}
 --- !u!1 &2087474501
 GameObject:
   m_ObjectHideFlags: 0
@@ -2966,7 +2989,9 @@ MonoBehaviour:
   playerSpeed: 13
   jumpingPower: 26
   numberofJumps: 0
-  finishedText: {fileID: 1091052665}
+  finishedTextController: {fileID: 1015140839}
+  score: 0
+  scoreObject: {fileID: 1275682839}
   _completedLevels: 0
 --- !u!4 &2087474503
 Transform:

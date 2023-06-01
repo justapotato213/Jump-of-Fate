@@ -8,6 +8,7 @@ TagManager:
   - UpgradeMenu
   - StatController
   - UpgradeController
+  - Canvas
   layers:
   - Default
   - TransparentFX

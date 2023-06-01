@@ -1,8 +1,8 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using Assets.Scripts.Player;
 using UnityEngine.SceneManagement;
+using System.IO;
 
 /// <summary>
 /// Allows for runtime modification of the player stats, as the player object gets destroyed between levels. 
@@ -28,7 +28,37 @@ public class PlayerStats : MonoBehaviour
     /// <summary>
     /// The game finished text.
     /// </summary>
-    public GameObject finishedText;
+    public FinishText finishedTextController;
+
+    /// <summary>
+    /// Current score
+    /// </summary>
+    public float score;
+
+    /// <summary>
+    /// Gameobject that stores the score
+    /// </summary>
+    public GameObject scoreObject;
+
+    /// <summary>
+    /// Load player data on start
+    /// </summary>
+    public void Start()
+    {
+        // save file path
+        string destination = Application.persistentDataPath + "/save.dat";
+        // check if it exists
+        if (File.Exists(destination))
+        {
+            // overwrite it with the loaded save data
+            string json = File.ReadAllText(destination);
+            JsonUtility.FromJsonOverwrite(json, this);
+
+            // sadly, game objects can't be serialized so we have to make a controller, and use that
+            var canvas = GameObject.FindWithTag("Canvas");
+            finishedTextController = canvas.GetComponent<FinishText>();
+        }
+    }
 
     /// <summary>
     /// How many levels the player has beaten (backing store)
@@ -47,9 +77,37 @@ public class PlayerStats : MonoBehaviour
             _completedLevels = value;
             // if we have beaten the game
             if (_completedLevels == 20)
-            {
+            { 
+                // delete save file
+                string path = Application.persistentDataPath + "/save.dat";
+                if (File.Exists(path))
+                {
+                    File.Delete(path);
+                }
+
+                score = scoreObject.GetComponent<Scores>().score;
+
+                // check if we have a high score saved
+                if (PlayerPrefs.HasKey("highscore"))
+                {
+                    // check if its lower than our current score
+                    if (PlayerPrefs.GetFloat("highscore") < score)
+                    {
+                        // save it
+                        PlayerPrefs.SetFloat("highscore", score);
+                    }
+                }
+                else
+                {
+                    // no highscore, set our current score to be it
+                    PlayerPrefs.SetFloat("highscore", score);
+                }
+
+                // delete score
+                PlayerPrefs.DeleteKey("score");
+                
                 // show the finished game screen
-                finishedText.SetActive(true);
+                finishedTextController.EnableText();
                 // freeze time
                 Time.timeScale = 0f;
                 // wait time
@@ -80,8 +138,8 @@ public class PlayerStats : MonoBehaviour
     private IEnumerator Wait()
     {
         yield return new WaitForSecondsRealtime(5);
+
         // load scene
         SceneManager.LoadScene("MainMenu");
     }
-
 }

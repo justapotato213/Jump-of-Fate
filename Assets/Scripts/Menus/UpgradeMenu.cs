@@ -20,13 +20,6 @@ namespace Assets.Scripts.Menus {
         /// </summary>
         public GameObject upgradeMenu;
 
-        private void Start()
-        {
-            // when we start, get the user to choose an upgrade
-            upgradeMenu.SetActive(true);
-            Time.timeScale = 0f;
-        }
-
         /// <summary>
         /// Increase the speed of the player by 10
         /// </summary>

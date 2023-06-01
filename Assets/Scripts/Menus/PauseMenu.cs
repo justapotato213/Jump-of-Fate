@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using System.IO;
 
 namespace Assets.Scripts.Menu
 {
@@ -14,27 +15,31 @@ namespace Assets.Scripts.Menu
         public GameObject pauseMenu;
 
         /// <summary>
-        /// Whether the game is currently paused
+        /// Gameobject which holds the playerStats script.
         /// </summary>
-        public bool isPaused = false;
+        public GameObject PlayerStats;
 
-        // Start is called before the first frame update
-        void Start()
-        {
-            Time.timeScale = 1f;
-        }
+        /// <summary>
+        /// Current score
+        /// </summary>
+        public float score;
+
+        /// <summary>
+        /// Gameobject that stores the score
+        /// </summary>
+        public GameObject scoreObject;
 
         // Update is called once per frame
         void Update()
         {
             if (Input.GetKeyDown(KeyCode.Escape))
             {
-                if (isPaused)
+                if (Time.timeScale == 0f && pauseMenu.activeSelf)
                 {
                     ResumeGame();
                 }
                 // timescale is modified by other things, check if it is not 0 the game is not being frozen by another thing.
-                else if (Time.timeScale == 1 && !isPaused)
+                else if (Time.timeScale == 1 && !pauseMenu.activeSelf)
                 {
                     PauseGame();
                 }
@@ -45,7 +50,28 @@ namespace Assets.Scripts.Menu
         /// Returns to Main Menu
         /// </summary>
         public void mainMenu()
-        { 
+        {
+            
+            score = scoreObject.GetComponent<Scores>().score;
+            PlayerPrefs.SetFloat("score", score);
+
+
+            PlayerStats = GameObject.FindGameObjectWithTag("StatController");
+
+            // save all our data
+            // setup our paths and variables
+            string json = JsonUtility.ToJson(PlayerStats.GetComponent<PlayerStats>());
+            string destination = Application.persistentDataPath + "/save.dat";
+
+            // check if we already have a save
+            if (!File.Exists(destination)) File.Create(destination).Dispose();
+   
+            // write the save data
+            File.WriteAllText(destination, json);
+
+            // reset the time
+            Time.timeScale = 1f;
+
             SceneManager.LoadScene("MainMenu");
         }
 
@@ -55,7 +81,6 @@ namespace Assets.Scripts.Menu
         public void PauseGame()
         { 
             Time.timeScale = 0f;
-            isPaused = true;
             pauseMenu.SetActive(true);
         }
 
@@ -64,9 +89,8 @@ namespace Assets.Scripts.Menu
         /// </summary>
         public void ResumeGame()
         {
-            pauseMenu.SetActive(false);
             Time.timeScale = 1f;
-            isPaused = false;
+            pauseMenu.SetActive(false);
         }
 
         /// <summary>
