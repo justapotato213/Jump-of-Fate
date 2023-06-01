@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using Assets.Scripts.Player;
 
 
 namespace Assets.Scripts.Menu
@@ -42,6 +41,7 @@ namespace Assets.Scripts.Menu
         {
             Debug.Log("Settings Button Pressed");
             settingsMenu.SetActive(true);
+            tutorialMenu.SetActive(false);
             mainMenu.SetActive(false);
         }
 
@@ -52,6 +52,7 @@ namespace Assets.Scripts.Menu
         {
             mainMenu.SetActive(true);
             settingsMenu.SetActive(false);
+            tutorialMenu.SetActive(false);
         }
 
         /// <summary>
@@ -59,7 +60,9 @@ namespace Assets.Scripts.Menu
         /// </summary>
         public void Tutorial()
         {
-            // Will be done in the future
+            mainMenu.SetActive(false);
+            tutorialMenu.SetActive(true);
+            settingsMenu.SetActive(false);
         }
         /// <summary>
         /// Closes the application
