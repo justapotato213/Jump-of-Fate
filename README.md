@@ -1,5 +1,5 @@
 # Jump-of-Fate
-A unity platforming game, featuring ugprades and differing levels. Made by Edison Ying and Tony L. 
+A unity platforming game, featuring ugprades and differing levels. Made by Edison Ying and Tony Lin. 
 # Installation Instructions
 1. Download and install both [Unity Hub](https://unity.com/download) and Unity (version: 2021.3.21f1).
 2. Register for a unity license. 
