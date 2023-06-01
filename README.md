@@ -2,6 +2,11 @@
 A unity platforming game, featuring ugprades and differing levels. Made by Edison Ying and Tony Lin. 
 ## Installation Instructions
 ### Playing 
+#### Releases
+1. [Download](https://github.com/justapotato213/Jump-of-Fate/releases/latest) the corresponding version for your computer. 
+2. Unzip the file, and run the executable. 
+#### Building
+If you would like to build it on your computer, follow these steps:
 1. Download and install both [Unity Hub](https://unity.com/download) and Unity (version: 2021.3.21f1).
 2. Register for a unity license. 
 3. [Clone](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository) this repository using `git clone https://github.com/justapotato213/Jump-of-Fate.git` inside a git terminal, or clone using an alternative method of your choice. 
@@ -9,7 +14,7 @@ A unity platforming game, featuring ugprades and differing levels. Made by Ediso
 5. [Build](https://docs.unity3d.com/Manual/PublishingBuilds.html) the project using unity for your desired platform, and run the executable unity builds. 
 ### Editing
 #### Game
-1. Follow steps 1-4 in [playing](https://github.com/justapotato213/Jump-of-Fate/edit/main/README.md#playing). 
+1. Follow steps 1-4 in [Building](https://github.com/justapotato213/Jump-of-Fate/edit/main/README.md#Building). 
 2. [Download Visual Studio](https://visualstudio.microsoft.com/), making sure to install the unity workload within the installer. 
 3. With the unity project open, click on edit -> preferences. 
 4. Click on external tools, and make sure Visual Studio is selected. 
