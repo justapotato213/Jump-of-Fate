@@ -1,5 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
+/*
+ * Authors: Edison 
+ */
 using UnityEngine;
 using UnityEngine.SceneManagement;
 

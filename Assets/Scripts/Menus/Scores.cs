@@ -1,3 +1,6 @@
+/*
+ * Authors: Edison and Tony
+ */
 using UnityEngine;
 using TMPro;
 

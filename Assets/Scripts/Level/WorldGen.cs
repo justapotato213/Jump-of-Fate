@@ -1,4 +1,7 @@
-﻿using UnityEngine;
+﻿/*
+ * Authors: Tony 
+ */
+using UnityEngine;
 using UnityEngine.Tilemaps;
 
 namespace Assets.Scripts.Level
