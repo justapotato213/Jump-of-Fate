@@ -1,7 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
+/*
+ * Authors: Tony 
+ */
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.Tilemaps;
 using Assets.Scripts.Menus;
 

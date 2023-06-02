@@ -1,6 +1,7 @@
-﻿using System.Collections;
+﻿/*
+ * Authors: Tony 
+ */
 using UnityEngine;
-using UnityEngine.Tilemaps;
 
 namespace Assets.Scripts.Level
 {

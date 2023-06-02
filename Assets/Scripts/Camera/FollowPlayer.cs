@@ -1,3 +1,6 @@
+/*
+ * Authors: Tony 
+ */
 using UnityEngine;
 
 namespace Assets.Scripts.Camera

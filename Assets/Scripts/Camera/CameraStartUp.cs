@@ -1,7 +1,8 @@
-﻿using UnityEngine;
+﻿/*
+ * Authors: Tony 
+ */
 
-// TODO: 
-// Optimize, currently will run forever, needed due to level loading reseting the player
+using UnityEngine;
 
 namespace Assets.Scripts.Camera
 {
