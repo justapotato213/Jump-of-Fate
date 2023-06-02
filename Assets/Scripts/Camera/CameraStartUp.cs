@@ -42,3 +42,7 @@ namespace Assets.Scripts.Camera
         }
     }
 }
+
+// Citations:
+// “Unity documentation,” Unity Documentation, https://docs.unity.com/ 
+// L. Long, “How to find a gameobject by tag?,” Unity Forum, https://forum.unity.com/threads/how-to-find-a-gameobject-by-tag.172188/. 

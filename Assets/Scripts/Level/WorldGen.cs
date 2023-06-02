@@ -107,3 +107,7 @@ namespace Assets.Scripts.Level
         }
     }
 }
+
+// Citations: 
+// “Unity documentation,” Unity Documentation, https://docs.unity.com/ 
+// B. Chhetri, “Level generator using image texture in unity - Yarsa devblog,” Yarsa Labs DevBlog, https://blog.yarsalabs.com/level-generator-using-image-texture-in-unity/

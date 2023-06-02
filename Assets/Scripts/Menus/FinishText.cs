@@ -20,3 +20,6 @@ public class FinishText : MonoBehaviour
         finishText.SetActive(true);
     }
 }
+
+// Citations: 
+// “Unity documentation,” Unity Documentation, https://docs.unity.com/ 

@@ -138,8 +138,14 @@ public class PlayerStats : MonoBehaviour
     private IEnumerator Wait()
     {
         yield return new WaitForSecondsRealtime(5);
+        // unfreeze time
+        Time.timeScale = 1f;
 
         // load scene
         SceneManager.LoadScene("MainMenu");
     }
 }
+
+// Citations:
+// B. Zgeb, “Persistent data: How to save your game states and settings,” Unity Blog, https://blog.unity.com/games/persistent-data-how-to-save-your-game-states-and-settings 
+// “Unity documentation,” Unity Documentation, https://docs.unity.com/ 
