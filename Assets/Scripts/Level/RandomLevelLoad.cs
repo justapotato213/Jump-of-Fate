@@ -95,5 +95,11 @@ namespace Assets.Scripts.Level
            return GameObject.FindGameObjectWithTag(tag);
         }
     }
-
 }
+
+// Citations: 
+// B. Chhetri, “Level generator using image texture in unity - Yarsa devblog,” Yarsa Labs DevBlog, https://blog.yarsalabs.com/level-generator-using-image-texture-in-unity/
+// “Destroy all children of object,” Destroy All Children of Object - Unity Answers, https://answers.unity.com/questions/611850/destroy-all-children-of-object.html (accessed Jun. 1, 2023). 
+// “How to load sprite dynamically from assets in Unity,” how to load sprite dynamically from assets in unity - Unity Answers, https://answers.unity.com/questions/1331550/how-to-load-sprite-dynamically-from-assets-in-unit.html 
+// L. Long, “How to find a gameobject by tag?,” Unity Forum, https://forum.unity.com/threads/how-to-find-a-gameobject-by-tag.172188/. 
+// “Unity documentation,” Unity Documentation, https://docs.unity.com/ 

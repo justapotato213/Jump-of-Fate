@@ -103,3 +103,7 @@ namespace Assets.Scripts.Menu
     }
 }
 
+// Citations:
+// B. Zgeb, “Persistent data: How to save your game states and settings,” Unity Blog, https://blog.unity.com/games/persistent-data-how-to-save-your-game-states-and-settings 
+// “Unity documentation,” Unity Documentation, https://docs.unity.com/ 
+

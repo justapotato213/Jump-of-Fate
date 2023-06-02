@@ -24,3 +24,7 @@ namespace Assets.Scripts.Camera
         }
     }
 }
+
+// Citations:
+// “Unity documentation,” Unity Documentation, https://docs.unity.com/ 
+// Zaphod, “Unity camera follows player script,” Stack Overflow, https://stackoverflow.com/questions/65816546/unity-camera-follows-player-script

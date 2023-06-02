@@ -13,3 +13,6 @@ public class DisableOnStart : MonoBehaviour
         transform.gameObject.SetActive(false);
     }
 }
+
+// Citations: 
+// “Unity documentation,” Unity Documentation, https://docs.unity.com/ 
