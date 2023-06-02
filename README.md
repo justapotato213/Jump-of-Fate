@@ -4,7 +4,7 @@ A unity platforming game, featuring ugprades and differing levels. Made by Ediso
 ### Playing 
 #### Releases
 1. [Download](https://github.com/justapotato213/Jump-of-Fate/releases/latest) the corresponding version for your computer. 
-2. Unzip the file, and run the executable (JOFv1.0.0).
+2. Unzip the file, and run the executable (JOFv1.0.0 or My Project.exe, depending on OS).
 #### Building
 If you would like to build it on your computer, follow these steps:
 1. Download and install both [Unity Hub](https://unity.com/download) and Unity (version: 2021.3.21f1).
