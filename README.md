@@ -4,7 +4,7 @@ A unity platforming game, featuring ugprades and differing levels. Made by Ediso
 ### Playing 
 #### Releases
 1. [Download](https://github.com/justapotato213/Jump-of-Fate/releases/latest) the corresponding version for your computer. 
-2. Unzip the file, and run the executable. 
+2. Unzip the file, and run the executable (JOFv1.0.0).
 #### Building
 If you would like to build it on your computer, follow these steps:
 1. Download and install both [Unity Hub](https://unity.com/download) and Unity (version: 2021.3.21f1).
@@ -46,4 +46,5 @@ If you would like to build it on your computer, follow these steps:
   - Note: In order to run this file, you will need to have the [PILLOW](https://pillow.readthedocs.io/en/stable/installation.html) library installed in Python. 
   - It works by randomly combining the slices (images) horizontally and adds the start and the end to each level.
   - Once these images are saved in [Levels](LevelGenerator/Level), you can transfer them into [Assets/Resources/Level](Assets/Resources/Level) and they will be playable.
-
+## Documentation
+- The main user manual is found in this [Doc](https://docs.google.com/document/d/1-vpKEELPpJwfev-XjtRFNolClUb9Pxli4TilruKsmxs/edit?usp=sharing) which contains all the information needed to play the game
